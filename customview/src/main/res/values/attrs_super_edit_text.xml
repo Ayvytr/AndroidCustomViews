@@ -20,7 +20,5 @@
         <attr name="switchShowPassword" format="boolean"/>
         <attr name="showClearIcon" format="boolean"/>
         <attr name="textBackground" format="reference"/>
-        <attr name="showUnderLine" format="boolean"/>
-        <attr name="underlineBg" format="reference"/>
     </declare-styleable>
 </resources>
