@@ -1,4 +1,4 @@
-package com.ayvytr.customviewproject;
+package com.ayvytr.androidcustomviews;
 
 import android.content.Context;
 import android.util.AttributeSet;

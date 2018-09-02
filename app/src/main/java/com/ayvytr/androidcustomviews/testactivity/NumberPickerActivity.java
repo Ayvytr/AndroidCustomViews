@@ -1,9 +1,9 @@
-package com.ayvytr.customviewproject.testactivity;
+package com.ayvytr.androidcustomviews.testactivity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.ayvytr.customviewproject.R;
+import com.ayvytr.androidcustomviews.R;
 import com.ayvytr.easykotlin.customview.NumberPickerView;
 
 public class NumberPickerActivity extends AppCompatActivity {

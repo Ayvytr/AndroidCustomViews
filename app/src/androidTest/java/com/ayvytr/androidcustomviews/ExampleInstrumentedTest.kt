@@ -1,4 +1,4 @@
-package com.ayvytr.customviewproject
+package com.ayvytr.androidcustomviews
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

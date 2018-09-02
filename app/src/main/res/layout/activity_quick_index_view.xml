@@ -16,7 +16,7 @@
         android:gravity="center"
         app:indexArray="@array/defaultQuickIndexViewLetters"/>
 
-    <com.ayvytr.easykotlin.customview.FlowLayout
+    <com.ayvytr.androidcustomviews.FlowLayout
         android:layout_width="@dimen/_200dp"
         android:layout_height="match_parent">
 
@@ -85,6 +85,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="还原数据"/>
-    </com.ayvytr.easykotlin.customview.FlowLayout>
+    </com.ayvytr.androidcustomviews.FlowLayout>
 </RelativeLayout>
 

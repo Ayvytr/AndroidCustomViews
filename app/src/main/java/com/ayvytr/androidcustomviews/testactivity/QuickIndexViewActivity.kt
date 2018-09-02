@@ -1,10 +1,10 @@
-package com.ayvytr.customviewproject.testactivity
+package com.ayvytr.androidcustomviews.testactivity
 
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.ayvytr.customviewproject.R
+import com.ayvytr.androidcustomviews.R
 import com.ayvytr.easykotlin.android.context.dp2px
 import com.ayvytr.easykotlin.android.context.getDrawable2
 import com.ayvytr.easykotlin.android.context.toast

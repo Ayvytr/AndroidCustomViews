@@ -1,4 +1,4 @@
-package com.ayvytr.customviewproject
+package com.ayvytr.androidcustomviews
 
 import org.junit.Test
 
