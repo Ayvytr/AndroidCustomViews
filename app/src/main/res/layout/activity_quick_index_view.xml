@@ -11,9 +11,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:textSize="10sp"
         android:background="#eee"
         android:gravity="center"
+        android:lineSpacingExtra="@dimen/_10dp"
+        android:textSize="10sp"
         app:indexArray="@array/defaultQuickIndexViewLetters"/>
 
     <com.ayvytr.androidcustomviews.FlowLayout
@@ -27,16 +28,16 @@
             android:text="更改字体颜色"/>
 
         <Button
-            android:id="@+id/btnTopDrawable"
+            android:id="@+id/btnTextSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="更改顶部图片"/>
+            android:text="更改字体大小"/>
 
         <Button
-            android:id="@+id/btnBottomDrawable"
+            android:id="@+id/btnText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="更改底部图片"/>
+            android:text="更改字体上下间距"/>
 
         <Button
             android:id="@+id/btnBackground"
@@ -45,46 +46,17 @@
             android:text="修改背景色"/>
 
         <Button
-            android:id="@+id/btnShowToast"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="是否显示Toast(Toast显示完再测)"/>
-
-        <Button
-            android:id="@+id/btnToastTextColor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="更改Toast字体颜色"/>
-
-        <Button
-            android:id="@+id/btnToastBackground"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="更改Toast背景"/>
-
-        <Button
-            android:id="@+id/btnToastWidth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="更改Toast宽度"/>
-
-        <Button
-            android:id="@+id/btnToastHeight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="更改Toast高度"/>
-
-        <Button
             android:id="@+id/btnNullData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="设置空数据"/>
+            android:text="清空索引"/>
 
         <Button
             android:id="@+id/btnRestoreData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="还原数据"/>
+            android:text="还原索引"/>
+
     </com.ayvytr.androidcustomviews.FlowLayout>
 </RelativeLayout>
 

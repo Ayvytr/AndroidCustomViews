@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import com.ayvytr.androidcustomviews.R
 import com.ayvytr.easykotlin.android.context.dp2px
 import com.ayvytr.easykotlin.android.context.getDrawable2
+import com.ayvytr.easykotlin.android.context.getStringArray
 import com.ayvytr.easykotlin.android.context.toast
 import kotlinx.android.synthetic.main.activity_quick_index_view.*
 import java.util.*
@@ -47,42 +48,15 @@ class QuickIndexViewActivity : AppCompatActivity()
             val rgb = randomColor
             quickIndexView?.textColor = rgb
         }
-//        btnTopDrawable.setOnClickListener {
-//            quickIndexView?.topDrawable = randomDrawable
-//        }
-//        btnBottomDrawable.setOnClickListener {
-//            quickIndexView?.bottomDrawable = randomDrawable
-//        }
         btnBackground.setOnClickListener {
             quickIndexView.setBackgroundColor(randomColor)
         }
-//        btnShowToast.setOnClickListener {
-//            quickIndexView.isShowToast = !quickIndexView.isShowToast
-//            //这里有问题，不能在屏幕上同时显示多个Toast
-//            toast("已经更改了，触摸字母索引试试吧!")
-//        }
-//        btnToastTextColor.setOnClickListener {
-//            quickIndexView.toastTextColor = randomColor
-//        }
-//        btnToastBackground.setOnClickListener {
-//            quickIndexView.toastBackground = ColorDrawable(randomColor)
-//        }
-//        btnToastWidth.setOnClickListener {
-//            quickIndexView.toastWidth = randomToastPx
-//        }
-//        btnToastHeight.setOnClickListener {
-//            quickIndexView.toastHeight = randomToastPx
-//        }
-//        btnNullData.setOnClickListener {
-//            quickIndexView.bottomDrawable = null
-//            quickIndexView.topDrawable = null
-//            quickIndexView.indexList = null
-//        }
-//        btnRestoreData.setOnClickListener {
-//            quickIndexView.setTopDrawable(android.R.drawable.ic_menu_search)
-//            quickIndexView.setBottomDrawable(android.R.drawable.dark_header)
-//            quickIndexView.indexList = arrayListOf("a", "B", "c")
-//        }
+        btnNullData.setOnClickListener {
+            quickIndexView.clearIndexList()
+        }
+        btnRestoreData.setOnClickListener {
+            quickIndexView.setIndexArray(getStringArray(R.array.defaultQuickIndexViewLetters))
+        }
     }
 
     private val randomColor: Int

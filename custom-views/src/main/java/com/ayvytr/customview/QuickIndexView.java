@@ -19,7 +19,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 字母索引控件，和微信联系人右侧字母索引效果相似，可以在屏幕中心显示Toast，以及字母索引顶部和底部的图片
+ * 联系人列表右侧字母索引控件.
  *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
  * @since 0.1.0
@@ -104,9 +104,10 @@ public class QuickIndexView extends View
             {
                 indexList.add(charSequence.toString());
             }
-        } else
+        }
+        else
         {
-            setLetterArray(ResUtil.getStringArray(getContext(), R.array.defaultQuickIndexViewLetters));
+            setIndexArray(ResUtil.getStringArray(getContext(), R.array.defaultQuickIndexViewLetters));
         }
 
         typedArray.recycle();
@@ -163,7 +164,16 @@ public class QuickIndexView extends View
      */
     public void setIndexList(List<String> indexList)
     {
-        this.indexList = indexList;
+        if(indexList != null)
+        {
+            this.indexList = indexList;
+            invalidate();
+        }
+    }
+
+    public void clearIndexList()
+    {
+        indexList.clear();
         invalidate();
     }
 
@@ -172,9 +182,15 @@ public class QuickIndexView extends View
      *
      * @param letterArray 要设置的字母索引数组
      */
-    public void setLetterArray(String[] letterArray)
+    public void setIndexArray(String[] letterArray)
     {
-        this.indexList = Arrays.asList(letterArray);
+        if(letterArray == null || letterArray.length == 0)
+        {
+            return;
+        }
+
+        indexList.clear();
+        indexList.addAll(Arrays.asList(letterArray));
         invalidate();
     }
 
