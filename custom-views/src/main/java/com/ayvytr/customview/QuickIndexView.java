@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -61,6 +62,7 @@ public class QuickIndexView extends View
 
     private int bottomTextY;
     private int topTextY;
+    private int lineSpacing;
 
     public QuickIndexView(Context context)
     {
@@ -95,6 +97,7 @@ public class QuickIndexView extends View
         textSize = typedArray.getDimensionPixelSize(R.styleable.QuickIndexView_android_textSize, -1);
         setBackgroundDrawable(typedArray.getDrawable(R.styleable.QuickIndexView_android_background));
         gravity = typedArray.getInt(R.styleable.QuickIndexView_android_gravity, Gravity.CENTER);
+        lineSpacing = typedArray.getDimensionPixelSize(R.styleable.QuickIndexView_android_lineSpacingExtra, 0);
 
         CharSequence[] textArray = typedArray.getTextArray(R.styleable.QuickIndexView_indexArray);
         if(textArray != null)
@@ -120,17 +123,13 @@ public class QuickIndexView extends View
 
     public void setTextSize(int textSize)
     {
-        if(this.textSize == textSize)
-        {
-            return;
-        }
-
-        if(textSize > calcMaxTextSize())
+        if(this.textSize == textSize || textSize < 0)
         {
             return;
         }
 
         this.textSize = textSize;
+        invalidate();
     }
 
     public int getGravity()
@@ -236,11 +235,8 @@ public class QuickIndexView extends View
     {
         super.onDraw(canvas);
 
-        int maxTextSize = calcMaxTextSize();
-        if(textSize == -1)
-        {
-            this.textSize = maxTextSize;
-        }
+        calcMaxTextSize();
+        calcMaxLineSpacing();
 
         paint.setColor(textColor);
         paint.setTextSize(textSize);
@@ -248,49 +244,67 @@ public class QuickIndexView extends View
         int y = getPaddingTop();
 
         int x = getWidth() >> 1;
-        int halfLetterLength = textSize >> 1;
+        int size = indexList.size();
 
         if(gravity == Gravity.CENTER || gravity == Gravity.CENTER_VERTICAL)
         {
-            if(textSize < calcMaxTextSize())
-            {
-                int size = getIndexList().size();
-                y = (getHeight() - size * textSize) / 2;
-            }
+            y = (getHeight() - getPaddingTop() - size * (textSize + lineSpacing)) / 2 + getPaddingTop();
         }
 
+        y += lineSpacing >> 1;
         this.topTextY = y;
 
         Paint.FontMetrics fontMetrics = paint.getFontMetrics();
+        int halfLetterLength = textSize >> 1;
         int fontY = (int) (halfLetterLength - fontMetrics.top / 2 - fontMetrics.bottom / 2);
-        int size = indexList.size();
+
         for(int i = 0; i < size; i++)
         {
             canvas.drawText(indexList.get(i), x, y + fontY, paint);
             y += textSize;
+
+            if(i == size - 1)
+            {
+                y += lineSpacing >> 1;
+            }
+            else
+            {
+                y += lineSpacing;
+            }
         }
 
         this.bottomTextY = y;
+        Log.e(getClass().getSimpleName(),
+                String.format("{onDraw} => %d %d %d %d %d", topTextY, bottomTextY, textSize, lineSpacing, getHeight()));
+    }
+
+    private int calcMaxLineSpacing()
+    {
+        int maxLineSpacing = (getHeight() - getPaddingTop() - getPaddingBottom() - textSize * indexList
+                .size()) / indexList.size();
+        if(lineSpacing > maxLineSpacing)
+        {
+            lineSpacing = maxLineSpacing;
+        }
+
+        return lineSpacing;
     }
 
     /**
-     * 返回的每个Letter的支持的最大文字尺寸，因为动态设置时，如果设置的文字尺寸太大，超出最大文字尺寸，绘制出来没有意义，
-     * 这时限制文字尺寸为支持的最大文字尺寸.
-     * <p>
-     * 计算方法：以控件宽度减去padding，而后计算
+     * 返回的每个Letter的支持的最大可绘制文字尺寸，因为动态设置时，如果设置的文字尺寸太大，被控件边界截断，绘制出来没有意义，
      *
-     * @return 支持的最大文字尺寸
+     * @return 可绘制的最大文字尺寸
      */
-    private int calcMaxTextSize()
+    private void calcMaxTextSize()
     {
         int width = getWidth() - getPaddingLeft() - getPaddingRight();
         int letterCount = getIndexList().size();
-        if(letterCount == 0)
-        {
-            return 0;
-        }
 
-        return Math.min(width, (getHeight() - getPaddingTop() - getPaddingBottom()) / letterCount);
+        int maxTextSize = Math.min(width, (getHeight() - getPaddingTop() - getPaddingBottom()) / letterCount);
+        if(textSize > maxTextSize)
+        {
+            textSize = maxTextSize;
+        }
     }
 
     @Override
@@ -306,11 +320,12 @@ public class QuickIndexView extends View
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_MOVE:
             {
-                int index = (int) ((event.getY() - topTextY) / textSize);
+                int index = (int) ((event.getY() - topTextY) / (textSize + lineSpacing));
 
                 if(onLetterChangeListener != null)
                 {
                     onLetterChangeListener.onLetterChange(index, indexList.get(index), this);
+                    Log.e(getClass().getSimpleName(), String.format("{letter} => %d", index));
                 }
             }
             break;
@@ -328,6 +343,17 @@ public class QuickIndexView extends View
     {
         paint = null;
         super.onDetachedFromWindow();
+    }
+
+
+    public int getLineSpacing()
+    {
+        return lineSpacing;
+    }
+
+    public void setLineSpacing(int lineSpacing)
+    {
+        this.lineSpacing = lineSpacing;
     }
 
     /**

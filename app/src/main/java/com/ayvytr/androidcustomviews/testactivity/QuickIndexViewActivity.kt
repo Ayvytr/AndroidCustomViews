@@ -48,6 +48,9 @@ class QuickIndexViewActivity : AppCompatActivity()
             val rgb = randomColor
             quickIndexView?.textColor = rgb
         }
+        btnTextSize.setOnClickListener {
+            quickIndexView.textSize = random.nextInt(100)
+        }
         btnBackground.setOnClickListener {
             quickIndexView.setBackgroundColor(randomColor)
         }

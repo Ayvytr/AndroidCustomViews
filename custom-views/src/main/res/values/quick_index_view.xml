@@ -6,6 +6,8 @@
         <attr name="android:background"/>
         <attr name="android:gravity"/>
 
+        <attr name="android:lineSpacingExtra"/>
+
         <attr name="indexArray" format="reference"/>
 
     </declare-styleable>
