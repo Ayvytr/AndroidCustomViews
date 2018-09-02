@@ -89,8 +89,8 @@ bintray {
     Properties properties = new Properties()
     properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
-    user = properties.getProperty('BINTRAY_USER');
-    key = properties.getProperty('BINTRAY_KEY');
+    user = properties.getProperty('BINTRAY_USER')
+    key = properties.getProperty('BINTRAY_KEY')
     if(user == null || key == null) {
         throw new NullPointerException("[Message] upload.gradle: User or key is null!")
     }
