@@ -23,7 +23,7 @@ import android.view.ViewConfiguration;
  * 数字选择View，比系统NumberPicker功能更多，且更强大.
  *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
- * @since 1.2.0
+ * @since 0.1.0
  * <p>
  * <p>
  * 原作者注释(已很久未更新，有些BUG，所以拿过来修改了)：

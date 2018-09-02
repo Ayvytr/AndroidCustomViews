@@ -30,8 +30,8 @@ import java.util.regex.Pattern;
  * 可点击清除按钮清除文本的EditText
  * 修改字体Padding，请使用textPadding，textPaddingLeft, textPaddingRight, textPaddingTop, textPaddingBottom.
  *
- * @author wangdunwei
- * @date 2018/5/7
+ * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
+ * @since 0.1.0
  */
 public class SuperEditText extends LinearLayout
 {
@@ -39,9 +39,7 @@ public class SuperEditText extends LinearLayout
     private ImageView ivClear;
     private ImageButton ibEye;
 
-    private View underLine;
-
-    private TextWatcher chineseFilter;
+    private TextWatcher filterChineseWatcher;
 
     public SuperEditText(Context context)
     {
@@ -65,7 +63,6 @@ public class SuperEditText extends LinearLayout
         etInput = findViewById(R.id.et_input);
         ivClear = findViewById(R.id.iv_clear);
         ibEye = findViewById(R.id.ib_eye_pwd);
-        underLine = findViewById(R.id.line);
 
         ivClear.setOnClickListener(new OnClickListener()
         {
@@ -175,15 +172,6 @@ public class SuperEditText extends LinearLayout
                 ivClear.setImageDrawable(drawable);
             }
 
-            boolean underlineVisible = ta.getBoolean(R.styleable.SuperEditText_showUnderLine, true);
-            underLine.setVisibility(underlineVisible ? VISIBLE : GONE);
-
-            int underlineResId = ta.getResourceId(R.styleable.SuperEditText_underlineBg, 0);
-            if(underlineResId != 0)
-            {
-                underLine.setBackgroundResource(underlineResId);
-            }
-
             ta.recycle();
 
             etInput.setEnabled(isEnabled());
@@ -241,9 +229,9 @@ public class SuperEditText extends LinearLayout
 
     private void addChineseTextWatcher()
     {
-        if(chineseFilter == null)
+        if(filterChineseWatcher == null)
         {
-            chineseFilter = new TextWatcher()
+            filterChineseWatcher = new TextWatcher()
             {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after)
@@ -254,7 +242,7 @@ public class SuperEditText extends LinearLayout
                 public void onTextChanged(CharSequence s, int start, int before, int count)
                 {
                     String editable = etInput.getText().toString();
-                    String str = chineseFilter(editable);
+                    String str = filterChinese(editable);
                     if(!editable.equals(str))
                     {
                         etInput.setText(str);
@@ -271,8 +259,8 @@ public class SuperEditText extends LinearLayout
 
             };
         }
-        etInput.removeTextChangedListener(chineseFilter);
-        etInput.addTextChangedListener(chineseFilter);
+        etInput.removeTextChangedListener(filterChineseWatcher);
+        etInput.addTextChangedListener(filterChineseWatcher);
     }
 
 
@@ -334,12 +322,7 @@ public class SuperEditText extends LinearLayout
         etInput.setKeyListener(input);
     }
 
-    public void setUnderLineVisible(boolean visible)
-    {
-        underLine.setVisibility(visible ? View.VISIBLE : View.GONE);
-    }
-
-    public static String chineseFilter(String str)
+    protected String filterChinese(String str)
     {
         try
         {
