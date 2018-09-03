@@ -5,7 +5,7 @@
 
 ## 引入
 
-​	implementation 'com.ayvytr:custom-views:0.1.0' 
+​	implementation 'com.ayvytr:custom-views:0.1.1'
 
 ## 使用
 
