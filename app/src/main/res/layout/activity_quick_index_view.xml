@@ -14,7 +14,6 @@
         android:background="#eee"
         android:gravity="center"
         android:lineSpacingExtra="@dimen/_10dp"
-        android:textSize="10sp"
         app:indexArray="@array/defaultQuickIndexViewLetters"/>
 
     <com.ayvytr.androidcustomviews.FlowLayout
@@ -34,7 +33,7 @@
             android:text="更改字体大小"/>
 
         <Button
-            android:id="@+id/btnText"
+            android:id="@+id/btnLineSpacing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="更改字体上下间距"/>

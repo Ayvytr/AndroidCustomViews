@@ -7,7 +7,6 @@ import android.graphics.Paint;
 import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -107,8 +106,7 @@ public class QuickIndexView extends View
             {
                 indexList.add(charSequence.toString());
             }
-        }
-        else
+        } else
         {
             setIndexArray(ResUtil.getStringArray(getContext(), R.array.defaultQuickIndexViewLetters));
         }
@@ -248,11 +246,11 @@ public class QuickIndexView extends View
 
         if(gravity == Gravity.CENTER || gravity == Gravity.CENTER_VERTICAL)
         {
-            y = (getHeight() - getPaddingTop() - size * (textSize + lineSpacing)) / 2 + getPaddingTop();
+            y = (getHeight() - getPaddingTop() - size * (textSize + lineSpacing)) >> 1 + getPaddingTop();
         }
 
-        y += lineSpacing >> 1;
         this.topTextY = y;
+        y += lineSpacing >> 1;
 
         Paint.FontMetrics fontMetrics = paint.getFontMetrics();
         int halfLetterLength = textSize >> 1;
@@ -274,33 +272,45 @@ public class QuickIndexView extends View
         }
 
         this.bottomTextY = y;
-        Log.e(getClass().getSimpleName(),
-                String.format("{onDraw} => %d %d %d %d %d", topTextY, bottomTextY, textSize, lineSpacing, getHeight()));
     }
 
-    private int calcMaxLineSpacing()
+    /**
+     * 校验修正文字上下间距，同理，间距太大，绘制出来没有意义
+     */
+    private void calcMaxLineSpacing()
     {
+        if(indexList.isEmpty())
+        {
+            return;
+        }
+
         int maxLineSpacing = (getHeight() - getPaddingTop() - getPaddingBottom() - textSize * indexList
                 .size()) / indexList.size();
         if(lineSpacing > maxLineSpacing)
         {
             lineSpacing = maxLineSpacing;
         }
-
-        return lineSpacing;
     }
 
     /**
-     * 返回的每个Letter的支持的最大可绘制文字尺寸，因为动态设置时，如果设置的文字尺寸太大，被控件边界截断，绘制出来没有意义，
-     *
-     * @return 可绘制的最大文字尺寸
+     * 校验修正每个Letter的支持的最大可绘制文字尺寸，因为动态设置时，如果设置的文字尺寸太大，被控件边界截断，绘制出来没有意义
+     * onDraw时，如果文字大小为-1，修正为最大可绘制尺寸。
      */
     private void calcMaxTextSize()
     {
         int width = getWidth() - getPaddingLeft() - getPaddingRight();
         int letterCount = getIndexList().size();
+        if(letterCount == 0)
+        {
+            return;
+        }
 
         int maxTextSize = Math.min(width, (getHeight() - getPaddingTop() - getPaddingBottom()) / letterCount);
+        if(textSize == -1)
+        {
+            textSize = maxTextSize;
+        }
+
         if(textSize > maxTextSize)
         {
             textSize = maxTextSize;
@@ -325,7 +335,6 @@ public class QuickIndexView extends View
                 if(onLetterChangeListener != null)
                 {
                     onLetterChangeListener.onLetterChange(index, indexList.get(index), this);
-                    Log.e(getClass().getSimpleName(), String.format("{letter} => %d", index));
                 }
             }
             break;
@@ -346,14 +355,28 @@ public class QuickIndexView extends View
     }
 
 
+    /**
+     * 获取字体上下间距值
+     *
+     * @return {@link #lineSpacing}
+     */
     public int getLineSpacing()
     {
         return lineSpacing;
     }
 
+    /**
+     * 设置字体上下间距值
+     *
+     * @param lineSpacing 上下间距值，px
+     */
     public void setLineSpacing(int lineSpacing)
     {
-        this.lineSpacing = lineSpacing;
+        if(lineSpacing >= 0)
+        {
+            this.lineSpacing = lineSpacing;
+            invalidate();
+        }
     }
 
     /**

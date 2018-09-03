@@ -51,6 +51,9 @@ class QuickIndexViewActivity : AppCompatActivity()
         btnTextSize.setOnClickListener {
             quickIndexView.textSize = random.nextInt(100)
         }
+        btnLineSpacing.setOnClickListener {
+            quickIndexView.lineSpacing = random.nextInt(30)
+        }
         btnBackground.setOnClickListener {
             quickIndexView.setBackgroundColor(randomColor)
         }
