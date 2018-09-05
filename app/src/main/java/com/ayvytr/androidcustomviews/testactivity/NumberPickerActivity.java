@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.ayvytr.androidcustomviews.R;
-import com.ayvytr.easykotlin.customview.NumberPickerView;
+import com.ayvytr.customview.custom.numberpicker.NumberPickerView;
 
 public class NumberPickerActivity extends AppCompatActivity {
 

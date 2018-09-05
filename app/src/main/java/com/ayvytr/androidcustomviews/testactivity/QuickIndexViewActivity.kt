@@ -6,10 +6,10 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Gravity
 import com.ayvytr.androidcustomviews.R
-import com.ayvytr.easykotlin.android.context.dp2px
 import com.ayvytr.easykotlin.android.context.getDrawable2
 import com.ayvytr.easykotlin.android.context.getStringArray
 import com.ayvytr.easykotlin.android.context.toast
+import com.ayvytr.easykotlin.context.dp2px
 import kotlinx.android.synthetic.main.activity_quick_index_view.*
 import java.util.*
 
