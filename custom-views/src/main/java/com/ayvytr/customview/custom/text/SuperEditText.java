@@ -41,7 +41,6 @@ public class SuperEditText extends LinearLayout
 
     private TextWatcher filterChineseWatcher;
     private boolean showClearIcon;
-    private View.OnFocusChangeListener onFocusChangeListener;
 
     public SuperEditText(Context context)
     {
@@ -219,7 +218,7 @@ public class SuperEditText extends LinearLayout
      */
     public void setFocusChangeListener(View.OnFocusChangeListener l)
     {
-        this.onFocusChangeListener = l;
+        etInput.setOnFocusChangeListener(l);
     }
 
     /**
