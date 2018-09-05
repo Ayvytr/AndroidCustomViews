@@ -65,7 +65,6 @@ public class SuperEditText extends LinearLayout
         ivClear = findViewById(R.id.iv_clear);
         ibEye = findViewById(R.id.ib_eye_pwd);
 
-
         ivClear.setOnClickListener(new OnClickListener()
         {
             @Override
@@ -105,15 +104,10 @@ public class SuperEditText extends LinearLayout
                 etInput.setBackgroundDrawable(drawable);
             }
 
-            //输入长度限制
             int maxLength = ta.getInt(R.styleable.SuperEditText_android_maxLength, -1);
-            if(maxLength >= 0)
+            if(maxLength > 0)
             {
                 etInput.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
-            }
-            else
-            {
-                etInput.setFilters(new InputFilter[0]);
             }
 
             int paddingTop, paddingRight, paddingLeft = 0, paddingBottom;
@@ -168,10 +162,6 @@ public class SuperEditText extends LinearLayout
             }
 
             showClearIcon = ta.getBoolean(R.styleable.SuperEditText_showClearIcon, true);
-            if(!showClearIcon)
-            {
-                ivClear.setVisibility(View.GONE);
-            }
             addClearTextWatcher();
 
             boolean filterChinese = ta.getBoolean(R.styleable.SuperEditText_filterChinese, false);
@@ -190,6 +180,7 @@ public class SuperEditText extends LinearLayout
 
             etInput.setEnabled(isEnabled());
             ivClear.setEnabled(isEnabled());
+            ibEye.setEnabled(isEnabled());
         }
     }
 
@@ -213,8 +204,7 @@ public class SuperEditText extends LinearLayout
                 if(showClearIcon)
                 {
                     boolean isEmpty = s.toString().isEmpty();
-                    ivClear.setVisibility(isEmpty ? View.INVISIBLE : View.VISIBLE);
-                    ivClear.setClickable(!isEmpty);
+                    ivClear.setVisibility(isEmpty ? View.GONE : View.VISIBLE);
                 }
             }
         };

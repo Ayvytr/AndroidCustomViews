@@ -24,11 +24,4 @@
         android:textColor="@color/red"
         app:textPaddingLeft="10dp"/>
 
-    <EditText
-        android:text="fffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
-        android:singleLine="true"
-        android:drawableRight="@drawable/ic_clear"
-        android:paddingRight="80dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"/>
 </LinearLayout>
