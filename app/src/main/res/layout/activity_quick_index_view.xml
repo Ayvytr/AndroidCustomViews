@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <com.ayvytr.customview.QuickIndexView
+    <com.ayvytr.customview.custom.index.QuickIndexView
         android:id="@+id/quickIndexView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,6 +55,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="还原索引"/>
+
+        <Button
+            android:id="@+id/btnGravity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="设置字母索引向上对齐/居中对齐"/>
 
     </com.ayvytr.androidcustomviews.FlowLayout>
 </RelativeLayout>

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.ayvytr.customview.NumberPickerView
+    <com.ayvytr.customview.custom.numberpicker.NumberPickerView
         android:id="@+id/npv"
         app:npv_ShowCount="5"
         android:layout_width="match_parent"

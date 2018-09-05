@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.ayvytr.customview.SuperEditText
+    <com.ayvytr.customview.custom.text.SuperEditText
         app:switchShowPassword="true"
         android:inputType="textPassword"
         android:layout_width="match_parent"

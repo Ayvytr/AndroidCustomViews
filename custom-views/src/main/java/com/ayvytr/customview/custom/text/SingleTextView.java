@@ -1,4 +1,4 @@
-package com.ayvytr.customview;
+package com.ayvytr.customview.custom.text;
 
 import android.content.Context;
 import android.support.annotation.Nullable;

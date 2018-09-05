@@ -1,4 +1,4 @@
-package com.ayvytr.customview;
+package com.ayvytr.customview.custom.index;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -11,6 +11,7 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.ayvytr.customview.R;
 import com.ayvytr.customview.util.DensityUtil;
 import com.ayvytr.customview.util.ResUtil;
 
@@ -24,7 +25,6 @@ import java.util.List;
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
  * @since 0.1.0
  */
-
 public class QuickIndexView extends View
 {
     /**
@@ -59,8 +59,11 @@ public class QuickIndexView extends View
     //索引文字重心，只有Top，Center，Center_Vertical有效
     private int gravity;
 
+    //实际绘制字母索引对应的顶部和底部y轴坐标，不开放给外部.
     private int bottomTextY;
     private int topTextY;
+
+    //字母索引文字上下间距值
     private int lineSpacing;
 
     public QuickIndexView(Context context)
@@ -114,11 +117,21 @@ public class QuickIndexView extends View
         typedArray.recycle();
     }
 
+    /**
+     * 获取字体大小
+     *
+     * @return {@link #textSize}
+     */
     public int getTextSize()
     {
         return textSize;
     }
 
+    /**
+     * 设置字体大小，如果字体大小和原来的相同，或者字体大小小于0，设置不生效.
+     *
+     * @param textSize 字体大小，px
+     */
     public void setTextSize(int textSize)
     {
         if(this.textSize == textSize || textSize < 0)
@@ -130,11 +143,21 @@ public class QuickIndexView extends View
         invalidate();
     }
 
+    /**
+     * 获取当前 indexList Gravity
+     *
+     * @return Gravity
+     */
     public int getGravity()
     {
         return gravity;
     }
 
+    /**
+     * 设置字母索引重心,只有 Gravity.TOP, Gravity.CENTER, Gravity.CENTER_VERTICAL有效，也就是说只有靠上对齐或者靠中间对齐有效.
+     *
+     * @param gravity Gravity
+     */
     public void setGravity(int gravity)
     {
         if(gravity != this.gravity)
@@ -142,6 +165,7 @@ public class QuickIndexView extends View
             if(gravity == Gravity.TOP || gravity == Gravity.CENTER || gravity == Gravity.CENTER_VERTICAL)
             {
                 this.gravity = gravity;
+                invalidate();
             }
         }
     }
@@ -168,6 +192,9 @@ public class QuickIndexView extends View
         }
     }
 
+    /**
+     * 清空字母索引.
+     */
     public void clearIndexList()
     {
         indexList.clear();
@@ -264,8 +291,7 @@ public class QuickIndexView extends View
             if(i == size - 1)
             {
                 y += lineSpacing >> 1;
-            }
-            else
+            } else
             {
                 y += lineSpacing;
             }
@@ -397,10 +423,10 @@ public class QuickIndexView extends View
         /**
          * {@link #onTouchEvent(MotionEvent)} 触发时，调用此字母索引变化方法
          *
-         * @param position       当前指向的position
-         * @param text           当前指向的文本
+         * @param indexPosition  当前指向的position
+         * @param indexText      当前指向的文本
          * @param quickIndexView {@link QuickIndexView}
          */
-        void onLetterChange(int position, String text, QuickIndexView quickIndexView);
+        void onLetterChange(int indexPosition, String indexText, QuickIndexView quickIndexView);
     }
 }

@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.Gravity
 import com.ayvytr.androidcustomviews.R
 import com.ayvytr.easykotlin.android.context.dp2px
 import com.ayvytr.easykotlin.android.context.getDrawable2
@@ -25,6 +26,8 @@ class QuickIndexViewActivity : AppCompatActivity()
     private val random = Random()
 
     private val drawables = intArrayOf(0, android.R.drawable.ic_menu_search, android.R.drawable.ic_menu_add, android.R.drawable.ic_menu_call, android.R.drawable.ic_menu_camera, android.R.drawable.ic_menu_day)
+
+    private var isCenter = true
 
     val randomDrawable: Drawable?
         get()
@@ -62,6 +65,10 @@ class QuickIndexViewActivity : AppCompatActivity()
         }
         btnRestoreData.setOnClickListener {
             quickIndexView.setIndexArray(getStringArray(R.array.defaultQuickIndexViewLetters))
+        }
+        btnGravity.setOnClickListener {
+            isCenter = !isCenter
+            quickIndexView.gravity = if(isCenter == true) Gravity.CENTER else Gravity.TOP
         }
     }
 

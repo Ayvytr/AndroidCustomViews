@@ -1,4 +1,4 @@
-package com.ayvytr.customview;
+package com.ayvytr.customview.custom.text;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -21,6 +21,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.ayvytr.customview.R;
 import com.ayvytr.customview.util.DensityUtil;
 
 import java.util.regex.Matcher;
