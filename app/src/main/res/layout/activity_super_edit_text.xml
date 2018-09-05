@@ -2,13 +2,22 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <com.ayvytr.customview.custom.text.SuperEditText
         app:switchShowPassword="true"
+        android:layout_marginTop="@dimen/_10dp"
+        android:inputType="textPassword"
+        android:layout_width="match_parent"
+        app:textBackground="@null"
+        android:layout_height="50dp"
+        android:textColor="@color/red"
+        app:textPaddingLeft="10dp"/>
+
+    <com.ayvytr.customview.custom.text.SuperEditText
+        android:layout_marginTop="@dimen/_10dp"
         android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -16,8 +25,10 @@
         app:textPaddingLeft="10dp"/>
 
     <EditText
-        android:paddingLeft="10dp"
+        android:text="fffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+        android:singleLine="true"
+        android:drawableRight="@drawable/ic_clear"
+        android:paddingRight="80dp"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_50dp"/>
-
+        android:layout_height="50dp"/>
 </LinearLayout>

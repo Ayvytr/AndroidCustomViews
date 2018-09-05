@@ -28,8 +28,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * 可点击清除按钮清除文本的EditText
- * 修改字体Padding，请使用textPadding，textPaddingLeft, textPaddingRight, textPaddingTop, textPaddingBottom.
+ * 可点击清除按钮清除文本的EditText，以及点击显示密码图标可分别显示/隐藏文字.
  *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
  * @since 0.1.0
@@ -41,6 +40,7 @@ public class SuperEditText extends LinearLayout
     private ImageButton ibEye;
 
     private TextWatcher filterChineseWatcher;
+    private boolean showClearIcon;
 
     public SuperEditText(Context context)
     {
@@ -64,6 +64,7 @@ public class SuperEditText extends LinearLayout
         etInput = findViewById(R.id.et_input);
         ivClear = findViewById(R.id.iv_clear);
         ibEye = findViewById(R.id.ib_eye_pwd);
+
 
         ivClear.setOnClickListener(new OnClickListener()
         {
@@ -98,7 +99,12 @@ public class SuperEditText extends LinearLayout
                 etInput.setHintTextColor(color);
             }
 
-            etInput.setBackgroundDrawable(ta.getDrawable(R.styleable.SuperEditText_android_background));
+            Drawable drawable = ta.getDrawable(R.styleable.SuperEditText_android_background);
+            if(drawable != null)
+            {
+                etInput.setBackgroundDrawable(drawable);
+            }
+
             //输入长度限制
             int maxLength = ta.getInt(R.styleable.SuperEditText_android_maxLength, -1);
             if(maxLength >= 0)
@@ -161,13 +167,20 @@ public class SuperEditText extends LinearLayout
                 });
             }
 
+            showClearIcon = ta.getBoolean(R.styleable.SuperEditText_showClearIcon, true);
+            if(!showClearIcon)
+            {
+                ivClear.setVisibility(View.GONE);
+            }
+            addClearTextWatcher();
+
             boolean filterChinese = ta.getBoolean(R.styleable.SuperEditText_filterChinese, false);
             if(filterChinese)
             {
                 addChineseTextWatcher();
             }
 
-            Drawable drawable = ta.getDrawable(R.styleable.SuperEditText_android_drawableRight);
+            drawable = ta.getDrawable(R.styleable.SuperEditText_clearIcon);
             if(drawable != null)
             {
                 ivClear.setImageDrawable(drawable);
@@ -180,11 +193,49 @@ public class SuperEditText extends LinearLayout
         }
     }
 
+    private void addClearTextWatcher()
+    {
+        TextWatcher textWatcher = new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after)
+            {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count)
+            {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s)
+            {
+                if(showClearIcon)
+                {
+                    boolean isEmpty = s.toString().isEmpty();
+                    ivClear.setVisibility(isEmpty ? View.INVISIBLE : View.VISIBLE);
+                    ivClear.setClickable(!isEmpty);
+                }
+            }
+        };
+        etInput.addTextChangedListener(textWatcher);
+    }
+
+    /**
+     * 设置焦点变化监听器
+     *
+     * @param l {@link android.view.View.OnFocusChangeListener}
+     */
     public void setFocusChangeListener(OnFocusChangeListener l)
     {
         etInput.setOnFocusChangeListener(l);
     }
 
+    /**
+     * 显示/隐藏显示密码图标
+     *
+     * @param showEyeIcon {@code true} 显示
+     */
     private void showEyeIcon(boolean showEyeIcon)
     {
         if(showEyeIcon)
@@ -206,28 +257,12 @@ public class SuperEditText extends LinearLayout
         else
         {
             ibEye.setVisibility(GONE);
-            TextWatcher textWatcher = new TextWatcher()
-            {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after)
-                {
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count)
-                {
-                }
-
-                @Override
-                public void afterTextChanged(Editable s)
-                {
-                    ivClear.setVisibility(s.toString().isEmpty() ? View.GONE : View.VISIBLE);
-                }
-            };
-            etInput.addTextChangedListener(textWatcher);
         }
     }
 
+    /**
+     * 添加中文字符过滤功能
+     */
     private void addChineseTextWatcher()
     {
         if(filterChineseWatcher == null)
@@ -271,58 +306,112 @@ public class SuperEditText extends LinearLayout
         super.setEnabled(enabled);
         etInput.setEnabled(isEnabled());
         ivClear.setEnabled(isEnabled());
+        ibEye.setEnabled(isEnabled());
     }
 
+    /**
+     * 获取当前文本
+     *
+     * @return 当前输入的文本
+     */
     public String getText()
     {
         return etInput.getText().toString();
     }
 
+    /**
+     * 设置文本
+     *
+     * @param text 要显示的文本
+     */
     public void setText(String text)
     {
         etInput.setText(text);
     }
 
+    /**
+     * 设置文本
+     *
+     * @param id 字符串id
+     */
     public void setText(@StringRes int id)
     {
         etInput.setText(id);
     }
 
+    /**
+     * 设置提示文本
+     *
+     * @param hint 要显示的提示文本
+     */
     public void setHint(String hint)
     {
         etInput.setHint(hint);
     }
 
+    /**
+     * 设置提示文本
+     *
+     * @param id 要显示的提示文本字符串id
+     */
     public void setHint(@StringRes int id)
     {
         etInput.setHint(id);
     }
 
-    public void setDrawableRight(Drawable drawable)
+    /**
+     * 设置清除按钮图标
+     *
+     * @param drawable 要设置的图标
+     */
+    public void setClearIcon(Drawable drawable)
     {
         ivClear.setImageDrawable(drawable);
     }
 
-    public void setDrawableRight(@DrawableRes int id)
+    /**
+     * 设置清除按钮图标
+     *
+     * @param id 图片资源id
+     */
+    public void setClearIcon(@DrawableRes int id)
     {
         ivClear.setImageResource(id);
     }
 
+    /**
+     * 添加文本变化监听器
+     *
+     * @param watcher {@link TextWatcher}
+     */
     public void addTextChangedListener(TextWatcher watcher)
     {
         etInput.addTextChangedListener(watcher);
     }
 
+    /**
+     * 设置光标位置
+     *
+     * @param index 光标位置索引
+     */
     public void setSelection(int index)
     {
         etInput.setSelection(index);
     }
 
-    public void setKeyListener(KeyListener input)
+    /**
+     * 设置按键监听器
+     *
+     * @param keyListener {@link KeyListener}
+     */
+    public void setKeyListener(KeyListener keyListener)
     {
-        etInput.setKeyListener(input);
+        etInput.setKeyListener(keyListener);
     }
 
+    /**
+     * 过滤中文的方法
+     */
     protected String filterChinese(String str)
     {
         try

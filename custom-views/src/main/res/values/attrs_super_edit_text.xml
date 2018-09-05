@@ -5,7 +5,6 @@
         <attr name="android:hint"/>
         <attr name="android:inputType"/>
         <attr name="android:enabled"/>
-        <attr name="android:drawableRight"/>
         <attr name="android:background"/>
         <attr name="android:digits"/>
         <attr name="android:maxLength"/>
@@ -18,6 +17,7 @@
         <attr name="textPadding" format="dimension"/>
         <attr name="filterChinese" format="boolean"/>
         <attr name="switchShowPassword" format="boolean"/>
+        <attr name="clearIcon" format="reference"/>
         <attr name="showClearIcon" format="boolean"/>
         <attr name="textBackground" format="reference"/>
     </declare-styleable>
