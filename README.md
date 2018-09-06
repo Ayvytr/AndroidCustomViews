@@ -5,7 +5,7 @@
 
 ## 引入
 
-​	implementation 'com.ayvytr:custom-views:0.1.1'
+	implementation 'com.ayvytr:custom-views:0.1.1'
 
 ## 自定义控件列表
 
@@ -18,6 +18,8 @@
 2. QuickIndexView 通讯录右侧字母索引控件
 
    [使用方法](#QuickIndexView使用方法)
+
+   ![screenshots/QuickIndexview.mp4](screenshots/QuickIndexview.mp4)
 
 3. SuperEditText 可以一键清空，点击图标显示/隐藏密码的自定义控件
 
@@ -209,9 +211,9 @@ OnValueChangeListenerInScrolling//滑动过程中响应value change
 
 ## QuickIndexView使用方法
 
-​	在布局文件中加入QuickIndexView，并且加入自定义属性，或者代码中动态创建和设置自定义属性
+	在布局文件中加入QuickIndexView，并且加入自定义属性，或者代码中动态创建和设置自定义属性
 
 
 
-​	
+	
 
