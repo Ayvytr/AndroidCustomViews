@@ -1,11 +1,16 @@
+[![jCenter](https://img.shields.io/badge/jCenter-0.1.2-red.svg)](https://bintray.com/ayvytr/maven/custom-views/_latestVersion)
+
+[![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
+
 # AndroidCustomViews
+
 方便安卓开发者使用和依赖的自定义控件库
 
 
 
-## 引入
+## 加入Gradle依赖
 
-	implementation 'com.ayvytr:custom-views:0.1.1'
+	implementation 'com.ayvytr:custom-views:0.1.2'
 
 ## 自定义控件列表
 
@@ -13,19 +18,27 @@
 
     [使用方法](#NumberPickerView使用方法 )
 
-   	![screenshots/QuickIndexview.mp4](screenshots/QuickIndexview.gi)
+ <img src="https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview.gif" width="40%" height="40%" />
+
+<img src="https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview1.gif" width="40%" height="40%" />
+
+<img src="https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview2.gif" width="40%" height="40%" />
 
 2. QuickIndexView 通讯录右侧字母索引控件
 
    [使用方法](#QuickIndexView使用方法)
 
-   ![screenshots/QuickIndexview.mp4](screenshots/QuickIndexview.gif)
+   <img src="screenshots/QuickIndexView.gif" width="40%" height="40%" />
 
 3. SuperEditText 可以一键清空，点击图标显示/隐藏密码的自定义控件
 
-   ![screenshots/QuickIndexview.mp4](screenshots/SuperEditText.gif)
+   <img src="screenshots/SuperEditText.gif" width="40%" height="40%" />
 
 4. SingleTextView 单行，居中，文本超出一行尾部省略的TextView
+
+    
+
+___
 
 
 
@@ -85,9 +98,7 @@ OnValueChangeListenerInScrolling//滑动过程中响应value change
 
 
 
-<h2 id="NumberPickerView使用方法">NumberPickerView使用方法</h2>
-
-NumberPickerView使用方法
+<h3 id="NumberPickerView使用方法">NumberPickerView使用方法</h3>
 
 1. 通过布局声明NumberPickerView
 
@@ -211,13 +222,60 @@ NumberPickerView使用方法
 
 ```
 
-### 
-
-## QuickIndexView使用方法
-
-	在布局文件中加入QuickIndexView，并且加入自定义属性，或者代码中动态创建和设置自定义属性
 
 
+___
+
+
+
+###  QuickIndexView使用方法
+
+在布局文件中加入QuickIndexView，并且加入自定义属性，或者代码中动态创建和设置自定义属性即可
+
+```
+<com.ayvytr.customview.custom.index.QuickIndexView
+    android:id="@+id/quickIndexView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentRight="true"
+    android:background="#eee"
+    android:gravity="center"
+    android:lineSpacingExtra="@dimen/_10dp"
+    app:indexArray="@array/defaultQuickIndexViewLetters"/>
+```
 
 	
+
+### API文档
+
+```xml
+clearIndexList()	清空字母索引.
+getGravity()		获取当前 indexList Gravity
+getIndexList()		获取 indexList
+getLineSpacing()	获取字体上下间距值
+getTextColor()		获取字体颜色 textColor
+getTextSize()		获取字体大小
+setGravity(int gravity)设置字母索引重心,只有 Gravity.TOP, Gravity.CENTER,Gravity.CENTER_VERTICAL有效，也就是说只有靠上对齐或者靠中间对齐有效.
+setIndexArray(String[] letterArray)		设置 indexList
+setIndexList(List<String> indexList)	设置 indexList
+setLineSpacing(int lineSpacing)	设置字体上下间距值
+setOnLetterChangeListener(OnLetterChangeListener onLetterChangeListener)	设置字母索引变化监听器
+setTextColor(int textColor)	设置字体颜色 textColor
+setTextSize(int textSize)	设置字体大小，如果字体大小和原来的相同，或者字体大小小于0，设置不生效.
+```
+
+
+
+### 自定义属性表
+
+```
+android:textColor	字体颜色
+android:textSize	字体大小
+android:background	背景
+android:gravity		字母索引重心（实际效果只有靠顶部对齐或者居中有效）
+android:lineSpacingExtra	字母索引文字上下间距
+indexArray			字母索引数组
+```
+
+
 
