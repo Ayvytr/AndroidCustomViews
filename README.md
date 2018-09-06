@@ -25,7 +25,7 @@
 
 |                                                              |                                                              |                                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <img src="https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview.gif" /> | <img src="https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview_refine1.gif" /> | <img src="https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview_refine1.gif" /> |
+| <img src="https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview.gif" /> | <img src="https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview1.gif" /> | <img src="https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview2.gif" /> |
 
 
 
@@ -247,7 +247,7 @@ ___
     app:indexArray="@array/defaultQuickIndexViewLetters"/>
 ```
 
-​	
+	
 
 #### API文档
 
