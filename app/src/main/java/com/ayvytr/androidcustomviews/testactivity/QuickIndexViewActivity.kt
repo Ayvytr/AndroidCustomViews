@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Gravity
 import com.ayvytr.androidcustomviews.R
+import com.ayvytr.customview.custom.index.QuickIndexView
 import com.ayvytr.easykotlin.android.context.getDrawable2
 import com.ayvytr.easykotlin.android.context.getStringArray
 import com.ayvytr.easykotlin.android.context.toast
@@ -19,7 +20,7 @@ class QuickIndexViewActivity : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setTitle(quickIndexView::class.java.simpleName)
+        setTitle(QuickIndexView::class.java.simpleName)
         setContentView(R.layout.activity_quick_index_view)
         initView()
     }
