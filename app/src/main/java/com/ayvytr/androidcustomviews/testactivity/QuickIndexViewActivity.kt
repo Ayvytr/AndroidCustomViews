@@ -19,6 +19,7 @@ class QuickIndexViewActivity : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
+        setTitle(quickIndexView::class.java.simpleName)
         setContentView(R.layout.activity_quick_index_view)
         initView()
     }

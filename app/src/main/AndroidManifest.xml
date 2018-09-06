@@ -17,8 +17,9 @@
             </intent-filter>
         </activity>
         <activity android:name="com.ayvytr.androidcustomviews.testactivity.QuickIndexViewActivity"/>
-        <activity android:name="com.ayvytr.androidcustomviews.testactivity.NumberPickerActivity"/>
         <activity android:name="com.ayvytr.androidcustomviews.testactivity.SuperEditTextActivity"/>
+        <activity android:name="com.ayvytr.androidcustomviews.testactivity.numberpickerview.NumberPickerActivity"/>
+        <activity android:name=".testactivity.numberpickerview.ActivityTimePicker"/>
     </application>
 
 </manifest>

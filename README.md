@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
-# AndroidCustomViews
+<h1 id="AndroidCustomViews">AndroidCustomViews</h1>
 
 方便安卓开发者使用和依赖的自定义控件库
 
@@ -12,25 +12,28 @@
 
 	implementation 'com.ayvytr:custom-views:0.1.2'
 
+
+
+
+
 ## 自定义控件列表
 
-1. NumberPickerView 数字选择控件，支持多行和多种选项的自定义控件
+1. NumberPickerView 数字选择控件，支持多行和多种选项的自定义控件 [使用方法](#NumberPickerView使用方法 )
 
-    [使用方法](#NumberPickerView使用方法 )
 
- <img src="https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview.gif" width="40%" height="40%" />
 
-<img src="https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview1.gif" width="40%" height="40%" />
 
-<img src="https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview2.gif" width="40%" height="40%" />
+|                                                              |                                                              |                                                              |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <img src="https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview.gif" /> | <img src="https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview_refine1.gif" /> | <img src="https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview_refine1.gif" /> |
 
-2. QuickIndexView 通讯录右侧字母索引控件
 
-   [使用方法](#QuickIndexView使用方法)
+
+2. QuickIndexView 通讯录右侧字母索引控件 [使用方法](#QuickIndexView)
 
    <img src="screenshots/QuickIndexView.gif" width="40%" height="40%" />
 
-3. SuperEditText 可以一键清空，点击图标显示/隐藏密码的自定义控件
+3. SuperEditText 可以一键清空，点击图标显示/隐藏密码的自定义控件  [使用方法](#SuperEditText)
 
    <img src="screenshots/SuperEditText.gif" width="40%" height="40%" />
 
@@ -228,7 +231,7 @@ ___
 
 
 
-###  QuickIndexView使用方法
+<h3 id="QuickIndexView">QuickIndexView</h3>
 
 在布局文件中加入QuickIndexView，并且加入自定义属性，或者代码中动态创建和设置自定义属性即可
 
@@ -244,9 +247,9 @@ ___
     app:indexArray="@array/defaultQuickIndexViewLetters"/>
 ```
 
-	
+​	
 
-### API文档
+#### API文档
 
 ```xml
 clearIndexList()	清空字母索引.
@@ -266,7 +269,7 @@ setTextSize(int textSize)	设置字体大小，如果字体大小和原来的相
 
 
 
-### 自定义属性表
+#### 自定义属性表
 
 ```
 android:textColor	字体颜色
@@ -279,3 +282,63 @@ indexArray			字母索引数组
 
 
 
+
+
+## SuperEditText
+
+#### API文档
+
+```
+addTextChangedListener(TextWatcher watcher)	添加文本变化监听器
+getText()	获取当前文本
+setClearIcon(Drawable drawable)	设置清除按钮图标
+setClearIcon(int id)	设置清除按钮图标
+setFocusChangeListener(View.OnFocusChangeListener l)	设置焦点变化监听器
+setHint(int id)	设置提示文本
+setHint(String hint)	设置提示文本
+setKeyListener(KeyListener keyListener)	设置按键监听器
+setSelection(int index)	设置光标位置
+setText(int id)	设置文本
+setText(String text)	设置文本
+```
+
+
+
+#### 自定义属性表
+
+```
+    <declare-styleable name="SuperEditText">
+        <attr name="android:text"/>
+        <attr name="android:hint"/>
+        <attr name="android:inputType"/>
+        <attr name="android:enabled"/>
+        <attr name="android:background"/>
+        <attr name="android:digits"/>
+        <attr name="android:maxLength"/>
+        <attr name="android:textColor"/>
+        <attr name="android:textColorHint"/>
+        <attr name="textPaddingLeft" format="dimension"/>
+        <attr name="textPaddingRight" format="dimension"/>
+        <attr name="textPaddingTop" format="dimension"/>
+        <attr name="textPaddingBottom" format="dimension"/>
+        <attr name="textPadding" format="dimension"/>
+        <attr name="filterChinese" format="boolean"/>
+        <attr name="switchShowPassword" format="boolean"/>
+        <attr name="clearIcon" format="reference"/>
+        <attr name="showClearIcon" format="boolean"/>
+        <attr name="textBackground" format="reference"/>
+    </declare-styleable>
+```
+
+
+
+## TODO
+
+1. SuperEditText自定义属性过多，需要优化和重新设计
+2. 加入更多自定义View
+
+
+
+
+
+## 都看到这儿了，那就点个[Star](#AndroidCustomViews)吧！非常感谢！
