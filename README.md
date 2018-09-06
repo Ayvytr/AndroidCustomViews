@@ -13,15 +13,17 @@
 
     [使用方法](#NumberPickerView使用方法 )
 
-   ​	
+   	![screenshots/QuickIndexview.mp4](screenshots/QuickIndexview.gi)
 
 2. QuickIndexView 通讯录右侧字母索引控件
 
    [使用方法](#QuickIndexView使用方法)
 
-   ![screenshots/QuickIndexview.mp4](screenshots/QuickIndexview.mp4)
+   ![screenshots/QuickIndexview.mp4](screenshots/QuickIndexview.gif)
 
 3. SuperEditText 可以一键清空，点击图标显示/隐藏密码的自定义控件
+
+   ![screenshots/QuickIndexview.mp4](screenshots/SuperEditText.gif)
 
 4. SingleTextView 单行，居中，文本超出一行尾部省略的TextView
 
@@ -83,7 +85,9 @@ OnValueChangeListenerInScrolling//滑动过程中响应value change
 
 
 
-## NumberPickerView使用方法
+<h2 id="NumberPickerView使用方法">NumberPickerView使用方法</h2>
+
+NumberPickerView使用方法
 
 1. 通过布局声明NumberPickerView
 
