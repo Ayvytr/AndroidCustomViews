@@ -1,6 +1,4 @@
-[![jCenter](https://img.shields.io/badge/jCenter-0.1.2-red.svg)](https://bintray.com/ayvytr/maven/custom-views/_latestVersion)
-
-[![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
+[![jCenter](https://img.shields.io/badge/jCenter-0.1.2-red.svg)](https://bintray.com/ayvytr/maven/custom-views/_latestVersion)  [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 <h1 id="AndroidCustomViews">AndroidCustomViews</h1>
 
