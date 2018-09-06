@@ -25,7 +25,7 @@
 
 |                                                              |                                                              |                                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <img src="https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview.gif" /> | <img src="https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview1.gif" /> | <img src="https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview2.gif" /> |
+| <img src="https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview.gif" /> | <img src="https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview1.jpg" /> | <img src="https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview2.jpg" /> |
 
 
 
