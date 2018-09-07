@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ayvytr.androidcustomviews.testactivity.ClearableEditTextActivity">
+
+    <com.ayvytr.customview.custom.text.ClearableEditText
+        android:id="@+id/et"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:drawableRight="@drawable/ic_text_clear"/>
+
+    <com.ayvytr.customview.custom.text.ClearableEditText
+        android:id="@+id/et2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50dp"
+        android:layout_marginTop="@dimen/_10dp"
+        android:hint="第二个输入框"/>
+
+    <TextView
+        android:id="@+id/tvFocus"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50dp"
+        android:layout_marginTop="@dimen/_20dp"
+        android:text="是否获得焦点："/>
+</LinearLayout>

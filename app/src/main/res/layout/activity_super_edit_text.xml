@@ -23,9 +23,5 @@
         android:textColor="@color/red"
         app:textPaddingLeft="10dp"/>
 
-    <com.ayvytr.customview.custom.text.ClearableEditText
-        android:drawableRight="@drawable/ic_text_clear"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"/>
 
 </LinearLayout>

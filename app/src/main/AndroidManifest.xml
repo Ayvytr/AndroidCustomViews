@@ -9,17 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.ayvytr.androidcustomviews.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.ayvytr.androidcustomviews.testactivity.QuickIndexViewActivity"/>
-        <activity android:name="com.ayvytr.androidcustomviews.testactivity.SuperEditTextActivity"/>
-        <activity android:name="com.ayvytr.androidcustomviews.testactivity.numberpickerview.NumberPickerActivity"/>
+        <activity android:name=".testactivity.QuickIndexViewActivity"/>
+        <activity android:name=".testactivity.SuperEditTextActivity"/>
+        <activity android:name=".testactivity.numberpickerview.NumberPickerActivity"/>
         <activity android:name=".testactivity.numberpickerview.ActivityTimePicker"/>
+        <activity android:name=".testactivity.ClearableEditTextActivity">
+        </activity>
     </application>
 
 </manifest>
