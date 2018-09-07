@@ -22,7 +22,7 @@
         android:layout_height="match_parent"
         android:paddingLeft="@dimen/_10dp"
         android:paddingRight="@dimen/_10dp"
-        android:src="@drawable/ic_clear"
+        android:src="@drawable/ic_text_clear"
         android:visibility="gone"/>
 
     <ImageButton

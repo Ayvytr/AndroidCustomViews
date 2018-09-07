@@ -7,20 +7,25 @@
     android:orientation="vertical">
 
     <com.ayvytr.customview.custom.text.SuperEditText
-        app:switchShowPassword="true"
-        android:layout_marginTop="@dimen/_10dp"
-        android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="@dimen/_10dp"
+        android:inputType="textPassword"
         android:textColor="@color/red"
+        app:switchShowPassword="true"
         app:textPaddingLeft="10dp"/>
 
     <com.ayvytr.customview.custom.text.SuperEditText
-        android:layout_marginTop="@dimen/_10dp"
-        android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="@dimen/_10dp"
+        android:inputType="textPassword"
         android:textColor="@color/red"
         app:textPaddingLeft="10dp"/>
+
+    <com.ayvytr.customview.custom.text.ClearableEditText
+        android:drawableRight="@drawable/ic_text_clear"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
 
 </LinearLayout>
