@@ -22,6 +22,8 @@
         <activity android:name=".testactivity.numberpickerview.ActivityTimePicker"/>
         <activity android:name=".testactivity.ClearableEditTextActivity">
         </activity>
+        <activity android:name=".testactivity.PasswordEditTextActivity">
+        </activity>
     </application>
 
 </manifest>

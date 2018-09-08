@@ -31,4 +31,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ClearableEditText"/>
+
+    <Button
+        android:id="@+id/btnPasswordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PasswordEditText"/>
 </LinearLayout>

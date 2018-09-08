@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.ayvytr.androidcustomviews.testactivity.ClearableEditTextActivity
+import com.ayvytr.androidcustomviews.testactivity.PasswordEditTextActivity
 import com.ayvytr.androidcustomviews.testactivity.QuickIndexViewActivity
 import com.ayvytr.androidcustomviews.testactivity.SuperEditTextActivity
 import com.ayvytr.androidcustomviews.testactivity.numberpickerview.NumberPickerActivity
@@ -26,5 +27,6 @@ class MainActivity : AppCompatActivity() {
         btnSuperEditText.setOnClickListener { startActivity(Intent(getContext(), SuperEditTextActivity::class.java)) }
 
         btnClearableEditText.onClick { startActivity<ClearableEditTextActivity>() }
+        btnPasswordEditText.onClick { startActivity<PasswordEditTextActivity>() }
     }
 }
