@@ -23,8 +23,7 @@ import static com.ayvytr.androidcustomviews.BaseAction.touch;
 import static org.hamcrest.CoreMatchers.not;
 
 /**
- * @author wangdunwei
- * @date 2018/9/7
+ * @author ayvytr
  */
 @RunWith(AndroidJUnit4.class)
 public class ClearableEditTextTest {
