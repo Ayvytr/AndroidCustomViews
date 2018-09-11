@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 
 import com.ayvytr.androidcustomviews.R
+import com.ayvytr.customview.custom.text.PasswordEditText
 import kotlinx.android.synthetic.main.activity_password_edit_text.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
@@ -16,6 +17,7 @@ class PasswordEditTextActivity : AppCompatActivity() {
     }
 
     private fun initView() {
+        title = PasswordEditText::class.java.simpleName
         btnChangeDrawable.onClick {
             et.setShowPasswordDrawable(android.R.drawable.ic_menu_search)
             et.setHidePasswordDrawable(android.R.drawable.ic_menu_save)

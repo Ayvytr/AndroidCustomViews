@@ -1,41 +1,32 @@
-[![jCenter](https://img.shields.io/badge/jCenter-0.1.2-red.svg)](https://bintray.com/ayvytr/maven/custom-views/_latestVersion)  [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
+[![jCenter](https://img.shields.io/badge/jCenter-0.2.0-red.svg)](https://bintray.com/ayvytr/maven/custom-views/_latestVersion)  [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 <h1 id="AndroidCustomViews">AndroidCustomViews</h1>
 
-方便安卓开发者使用和依赖的自定义控件库
+方便安卓开发者使用的自定义控件库
 
 
 
 ## 加入Gradle依赖
 
-	implementation 'com.ayvytr:custom-views:0.1.2'
-
-
+	implementation 'com.ayvytr:custom-views:0.2.0'
+	或者
+	compile 'com.ayvytr:custom-views:0.2.0'
 
 
 
 ## 自定义控件列表
 
-1. NumberPickerView 数字选择控件，支持多行和多种选项的自定义控件 [使用方法](#NumberPickerView使用方法 )
-
-
-
-
-|                                                              |                                                              |                                                              |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <img src="https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview.gif" /> | <img src="https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview1.jpg" /> | <img src="https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview2.jpg" /> |
-
-
+1. NumberPickerView 数字选择控件，支持多行和多种选项的数字选择控件 [使用方法](#NumberPickerView)
 
 2. QuickIndexView 通讯录右侧字母索引控件 [使用方法](#QuickIndexView)
 
-   <img src="screenshots/QuickIndexView.gif" width="40%" height="40%" />
+3. SuperEditText 可以一键清空，点击图标显示/隐藏密码的EditText  [使用方法](#SuperEditText)
 
-3. SuperEditText 可以一键清空，点击图标显示/隐藏密码的自定义控件  [使用方法](#SuperEditText)
+4. SingleTextView 单行，居中，文本超出一行尾部省略的TextView 
 
-   <img src="screenshots/SuperEditText.gif" width="40%" height="40%" />
+5. ClearableEditText <font color=red>**0.2.0新加入**</font> 一键清空文本的EditText，直接继承AppCompatEditText  [使用方法](#ClearableEditText)
 
-4. SingleTextView 单行，居中，文本超出一行尾部省略的TextView
+6. PasswordEditText <font color=red>**0.2.0新加入 **</font>点击或触摸显示/隐藏密码的EditText，直接继承AppCompatEditText [使用方法](#PasswordEditText)
 
     
 
@@ -43,9 +34,25 @@ ___
 
 
 
-## 说明
+## 截图
 
-### NumberPickerView
+|                       NumberPickerView                       |                       NumberPickerView                       |                       NumberPickerView                       |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| ![img](https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview.gif) | ![img](https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview1.jpg) | ![img](https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview2.jpg) |
+
+| QuickIndexView                                               | SuperEditText                              | ClearableEditText                      |
+| ------------------------------------------------------------ | ------------------------------------------ | -------------------------------------- |
+| <img src="screenshots/QuickIndexView.gif" width="50%" height="50%" /> | <img src="screenshots/SuperEditText.gif"/> | ![](screenshots/ClearableEditText.gif) |
+
+| PasswordEditText                      |
+| ------------------------------------- |
+| ![](screenshots/PasswordEditText.gif) |
+
+
+
+## 使用和说明
+
+<h3 id="NumberPickerView">NumberPickerView</h3>
 
 `NumberPickerView`是一款与android原生`NumberPicker`具有类似界面以及类似功能的`View`。
 主要功能同样是从多个候选项中通过上下滚动的方式选择需要的选项，但是与`NumberPicker`相比较，有几个主要不同点，下面是两者的不同之处。
@@ -99,7 +106,7 @@ OnValueChangeListenerInScrolling//滑动过程中响应value change
 
 
 
-<h3 id="NumberPickerView使用方法">NumberPickerView使用方法</h3>
+#### NumberPickerView使用方法
 
 1. 通过布局声明NumberPickerView
 
@@ -122,8 +129,8 @@ OnValueChangeListenerInScrolling//滑动过程中响应value change
 
 ```
 
-1. Java代码中使用：
-     1)若设置的数据(String[] mDisplayedValues)不会再次改变，可以使用如下方式进行设置：（与NumberPicker的设置方式一致）
+3. Java代码中使用：
+   1)若设置的数据(String[] mDisplayedValues)不会再次改变，可以使用如下方式进行设置：（与NumberPicker的设置方式一致）
 
 ```java
         picker.setMinValue(minValue);
@@ -280,9 +287,7 @@ indexArray			字母索引数组
 
 
 
-
-
-## SuperEditText
+<h3 id="SuperEditText">SuperEditText</h3>
 
 #### API文档
 
@@ -330,13 +335,70 @@ setText(String text)	设置文本
 
 
 
+<h3 id="ClearableEditText">ClearableEditText</h3>
+
+#### API 文档
+
+```java
+getClearTextDrawable() 获取清除Drawable
+isShowClearDrawableNoFocus() 没有焦点时是否显示清除Drawable
+setClearTextDrawable(Drawable clearTextDrawable) 设置清除Drawable
+setClearTextDrawable(int drawableId) 设置清除Drawable
+setShowClearDrawableNoFocus(boolean showClearDrawableNoFocus) 设置没有焦点时是否显示清除Drawable
+```
+
+#### 自定义属性表
+
+```
+<declare-styleable name="ClearableEditText">
+    <attr name="showClearDrawableNoFocus" format="boolean"/>	是否在没有焦点时显示Drawable
+</declare-styleable>
+```
+
+<h3 id="PasswordEditText">PasswordEditText</h3>
+
+#### API 文档
+
+```
+getHidePasswordDrawable() 获取隐藏密码Drawable
+getShowPasswordDrawable() 获取显示密码Drawable
+isPasswordInputType(int inputType) 判断输入类型是不是密码.
+isShowDrawableNoFocus() 获取是否在没有焦点时显示Drawable.
+setClickMode(boolean clickMode) 设置点击显示/隐藏Drawable模式
+setHidePasswordDrawable(Drawable hidePasswordDrawable) 设置隐藏密码Drawable
+setHidePasswordDrawable(int hidePasswordDrawableId) 设置隐藏密码Drawable
+setShowDrawableNoFocus(boolean showDrawableNoFocus) 设置是否在没有焦点时显示Drawable
+setShowPasswordDrawable(android.graphics.drawable.Drawable showPasswordDrawable) 设置显示密码Drawable
+setShowPasswordDrawable(int showPasswordDrawableId) 设置显示密码Drawable
+```
+
+
+
+#### 自定义属性表
+
+```
+    <declare-styleable name="PasswordEditText">
+        <attr name="showPasswordDrawable" format="reference"/>  显示密码Drawable
+        <attr name="hidePasswordDrawable" format="reference"/>  隐藏密码Drawable
+        <attr name="showDrawableWhenEmptyText" format="boolean"/> 当文本为空时是否显示Drawable
+        <attr name="clickMode" format="boolean"/>   点击模式，true：点击显示，再次点击隐藏密码；false:按下显示，抬起隐藏密码
+        <attr name="showDrawableNoFocus" format="boolean"/> 当没有焦点时是否显示Drawable
+    </declare-styleable>
+```
+
+
+
 ## TODO
 
-1. SuperEditText自定义属性过多，需要优化和重新设计
+1. ~~SuperEditText自定义属性过多，需要优化和重新设计~~
 2. 加入更多自定义View
+3. 自定义TabLayout
+4. 完善测试用例（欢迎熟练Espresso等测试的大神提意见或者推荐资料）
 
 
 
+### 想要更多自定义控件请到[顶部](#AndroidCustomViews)提Issue或者Pull Request吧！
 
 
-## 都看到这儿了，那就点个[Star](#AndroidCustomViews)吧！非常感谢！
+
+## 都看到这儿了，那就请点个[Star](#AndroidCustomViews)吧！非常感谢！
