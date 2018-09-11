@@ -24,14 +24,21 @@ import com.ayvytr.customview.util.DensityUtil;
 public class PasswordEditText extends AppCompatEditText {
     private int defaultPwdDrawableArea;
 
+    //Drawable是否正在显示
     private boolean isDrawableShowing;
-    private boolean isShowPwd;
+    //当前显示的文本是：密码/文本
+    private boolean isShowingPwd;
 
+    //显示/隐藏密码的Drawable
     private Drawable showPasswordDrawable;
     private Drawable hidePasswordDrawable;
+
     private boolean handlingHoverEvent;
 
+    //DrawableRight点击模式, true:点击模式 false:触摸模式，DrawableRight按下显示抬起隐藏密码
     private boolean clickMode;
+
+    //没有焦点时是否显示Drawable
     private boolean showDrawableNoFocus;
 
 
@@ -162,10 +169,10 @@ public class PasswordEditText extends AppCompatEditText {
     }
 
     private void handlePasswordVisibility() {
-        isShowPwd = !isShowPwd;
+        isShowingPwd = !isShowingPwd;
         onPasswordDrawableChanged();
 
-        setTransformationMethod(isShowPwd ? null : PasswordTransformationMethod.getInstance());
+        setTransformationMethod(isShowingPwd ? null : PasswordTransformationMethod.getInstance());
         setSelection(getText().length());
     }
 
@@ -188,7 +195,7 @@ public class PasswordEditText extends AppCompatEditText {
         Drawable[] cs = getCompoundDrawables();
         if(isDrawableShowing) {
             setCompoundDrawablesWithIntrinsicBounds(cs[0], cs[1],
-                    isShowPwd ? showPasswordDrawable : hidePasswordDrawable, cs[3]);
+                    isShowingPwd ? showPasswordDrawable : hidePasswordDrawable, cs[3]);
         } else {
             setCompoundDrawablesWithIntrinsicBounds(cs[0], cs[1], null, cs[3]);
         }
