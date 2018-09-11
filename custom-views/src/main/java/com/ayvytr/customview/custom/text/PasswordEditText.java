@@ -22,6 +22,8 @@ import com.ayvytr.customview.util.DrawableUtil;
 import com.ayvytr.customview.util.ResUtil;
 
 /**
+ * 点击图标显示/隐藏密码的EditText.
+ *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
  * @since 0.2.0
  */

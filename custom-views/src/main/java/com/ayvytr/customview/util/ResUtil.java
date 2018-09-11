@@ -12,7 +12,7 @@ import android.support.v4.content.ContextCompat;
  * 这个类是专门用于自定义控件时，需要使用控件的 {@link Context} 时，专门提供的类，用来做控件相关操作.
  *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
- * @since 1.2.0
+ * @since 0.1.0
  */
 
 public class ResUtil
@@ -20,6 +20,7 @@ public class ResUtil
     /**
      * 从资源中获取Drawable
      *
+     * @param context Context
      * @param id Drawable资源id
      * @return Drawable
      */
@@ -32,6 +33,7 @@ public class ResUtil
     /**
      * 从资源中获取Dimension并返回
      *
+     * @param context Context
      * @param id 尺寸资源id
      * @return 尺寸像素值
      */
@@ -43,6 +45,7 @@ public class ResUtil
     /**
      * 从资源中获取Dimension并返回float类型
      *
+     * @param context Context
      * @param id 尺寸资源id
      * @return 尺寸像素值
      */
@@ -54,6 +57,7 @@ public class ResUtil
     /**
      * 从资源中获取Dimension并返回
      *
+     * @param context Context
      * @param id 像素资源id
      * @return 尺寸dp值
      */
@@ -65,6 +69,7 @@ public class ResUtil
     /**
      * 从资源中获取Dimension并返回float类型
      *
+     * @param context Context
      * @param id 像素资源id
      * @return 尺寸dp值
      */
@@ -76,6 +81,7 @@ public class ResUtil
     /**
      * 从资源中获取Color
      *
+     * @param context Context
      * @param id 颜色资源id
      * @return 颜色值
      */
@@ -87,6 +93,7 @@ public class ResUtil
     /**
      * 获取返回String array.
      *
+     * @param context Context
      * @param id resource id
      * @return String array
      */
@@ -98,6 +105,7 @@ public class ResUtil
     /**
      * 获取返回int array.
      *
+     * @param context Context
      * @param id resource id
      * @return int array
      */
@@ -109,6 +117,7 @@ public class ResUtil
     /**
      * 获取返回text id.
      *
+     * @param context Context
      * @param id resource id
      * @return text array
      */

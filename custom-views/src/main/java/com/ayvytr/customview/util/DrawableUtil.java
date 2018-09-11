@@ -4,7 +4,10 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 
 /**
- * @author admin
+ * Drawable相关操作
+ *
+ * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
+ * @since 0.2.0
  */
 public class DrawableUtil {
     private DrawableUtil() {

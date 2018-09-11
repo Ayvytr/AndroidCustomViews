@@ -21,7 +21,7 @@ import com.ayvytr.customview.util.ResUtil;
 
 
 /**
- * 可清除文本的EditText，清除图标是drawableRight指定的。预览会看不到图，运行起来会显示，直接继承的{@link AppCompatEditText}.
+ * 可清除文本的EditText，清除图标是drawableRight指定的。预览会看不到图，运行起来会显示，直接继承的AppCompatEditText.
  * 请注意drawableRight是做清除文本的。
  *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
