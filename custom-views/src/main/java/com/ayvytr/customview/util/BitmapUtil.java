@@ -19,6 +19,10 @@ import java.io.IOException;
 
 public class BitmapUtil
 {
+    private BitmapUtil()
+    {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * drawable 转换为 Bitmap.

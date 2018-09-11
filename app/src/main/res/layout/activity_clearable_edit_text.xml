@@ -28,4 +28,10 @@
         android:layout_height="@dimen/_50dp"
         android:layout_marginTop="@dimen/_20dp"
         android:text="是否获得焦点："/>
+
+    <Button
+        android:id="@+id/btnChangeDrawable"
+        android:text="更换图标"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

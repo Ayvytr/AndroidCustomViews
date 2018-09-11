@@ -6,11 +6,20 @@ import android.view.View
 
 import com.ayvytr.androidcustomviews.R
 import kotlinx.android.synthetic.main.activity_password_edit_text.*
+import org.jetbrains.anko.sdk25.coroutines.onClick
 
 class PasswordEditTextActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_password_edit_text)
+        initView()
+    }
+
+    private fun initView() {
+        btnChangeDrawable.onClick {
+            et.setShowPasswordDrawable(android.R.drawable.ic_menu_search)
+            et.setHidePasswordDrawable(android.R.drawable.ic_menu_save)
+        }
     }
 
     fun onSwitchDrawable(view: View) {

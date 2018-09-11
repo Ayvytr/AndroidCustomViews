@@ -2,7 +2,10 @@ package com.ayvytr.customview.custom.text;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.widget.AppCompatEditText;
@@ -14,6 +17,7 @@ import android.view.View;
 
 import com.ayvytr.customview.R;
 import com.ayvytr.customview.util.DensityUtil;
+import com.ayvytr.customview.util.ResUtil;
 
 
 /**
@@ -24,11 +28,12 @@ import com.ayvytr.customview.util.DensityUtil;
  * @since 0.2.0
  */
 public class ClearableEditText extends AppCompatEditText
-        implements View.OnTouchListener, View.OnFocusChangeListener, TextWatcher {
+        implements View.OnTouchListener, TextWatcher {
     //清除Drawable，直接使用drawableRight设置
-    private Drawable mClearTextIcon;
-    private OnFocusChangeListener mOnFocusChangeListener;
+    private Drawable clearTextDrawable;
     private OnTouchListener mOnTouchListener;
+
+    //是否在没有焦点时显示清除图标
     private boolean showClearDrawableNoFocus;
 
     public ClearableEditText(Context context) {
@@ -45,11 +50,6 @@ public class ClearableEditText extends AppCompatEditText
     }
 
     @Override
-    public void setOnFocusChangeListener(final OnFocusChangeListener onFocusChangeListener) {
-        mOnFocusChangeListener = onFocusChangeListener;
-    }
-
-    @Override
     public void setOnTouchListener(final OnTouchListener onTouchListener) {
         mOnTouchListener = onTouchListener;
     }
@@ -57,16 +57,15 @@ public class ClearableEditText extends AppCompatEditText
     private void init(AttributeSet attrs) {
         Drawable[] cd = getCompoundDrawables();
         if(cd[2] == null) {
-            mClearTextIcon = DrawableCompat
+            clearTextDrawable = DrawableCompat
                     .wrap(ContextCompat.getDrawable(getContext(), R.drawable.ic_text_clear_light));
         } else {
-            mClearTextIcon = cd[2];
+            clearTextDrawable = cd[2];
         }
-        DrawableCompat.setTint(mClearTextIcon, getCurrentHintTextColor());
-        mClearTextIcon.setBounds(0, 0, mClearTextIcon.getIntrinsicHeight(), mClearTextIcon.getIntrinsicHeight());
-        setClearIconVisible(false);
+        DrawableCompat.setTint(clearTextDrawable, getCurrentHintTextColor());
+        clearTextDrawable
+                .setBounds(0, 0, clearTextDrawable.getIntrinsicHeight(), clearTextDrawable.getIntrinsicHeight());
         super.setOnTouchListener(this);
-        super.setOnFocusChangeListener(this);
         addTextChangedListener(this);
 
         int padding = DensityUtil.dp2px(getContext(), 5);
@@ -77,20 +76,21 @@ public class ClearableEditText extends AppCompatEditText
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.ClearableEditText);
         showClearDrawableNoFocus = a.getBoolean(R.styleable.ClearableEditText_showClearDrawableNoFocus, false);
         a.recycle();
+
+        onClearIconVisibleChanged();
     }
 
     @Override
-    public void onFocusChange(final View view, final boolean hasFocus) {
-        setClearIconVisible(showClearDrawableNoFocus ? getText().length() > 0 : hasFocus && getText().length() > 0);
-        if(mOnFocusChangeListener != null) {
-            mOnFocusChangeListener.onFocusChange(view, hasFocus);
-        }
+    protected void onFocusChanged(boolean focused, int direction, Rect previouslyFocusedRect) {
+        super.onFocusChanged(focused, direction, previouslyFocusedRect);
+        onClearIconVisibleChanged();
     }
 
     @Override
     public boolean onTouch(final View view, final MotionEvent motionEvent) {
         final int x = (int) motionEvent.getX();
-        if(mClearTextIcon.isVisible() && x > getWidth() - getPaddingRight() - mClearTextIcon.getIntrinsicWidth()) {
+        if(clearTextDrawable.isVisible() && x > getWidth() - getPaddingRight() - clearTextDrawable
+                .getIntrinsicWidth()) {
             if(motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 setError(null);
                 setText("");
@@ -102,9 +102,6 @@ public class ClearableEditText extends AppCompatEditText
 
     @Override
     public final void onTextChanged(final CharSequence s, final int start, final int before, final int count) {
-        if(isFocused()) {
-            setClearIconVisible(s.length() > 0);
-        }
     }
 
     @Override
@@ -113,13 +110,73 @@ public class ClearableEditText extends AppCompatEditText
 
     @Override
     public void afterTextChanged(Editable s) {
+        onClearIconVisibleChanged();
     }
 
 
-    private void setClearIconVisible(boolean visible) {
-        mClearTextIcon.setVisible(visible, false);
+    private void onClearIconVisibleChanged() {
+        boolean visible = showClearDrawableNoFocus ? getText().length() > 0 : isFocused() && getText().length() > 0;
+        clearTextDrawable.setVisible(visible, false);
         Drawable[] compoundDrawables = getCompoundDrawables();
-        setCompoundDrawables(compoundDrawables[0], compoundDrawables[1], visible ? mClearTextIcon : null,
+        setCompoundDrawables(compoundDrawables[0], compoundDrawables[1], visible ? clearTextDrawable : null,
                 compoundDrawables[3]);
+    }
+
+    /**
+     * 获取清除Drawable
+     *
+     * @return {@link #clearTextDrawable}
+     */
+    public Drawable getClearTextDrawable() {
+        return clearTextDrawable;
+    }
+
+    /**
+     * 设置清除Drawable
+     *
+     * @param clearTextDrawable 要设置的Drawable
+     */
+    public void setClearTextDrawable(@NonNull Drawable clearTextDrawable) {
+        if(clearTextDrawable == null || this.clearTextDrawable == clearTextDrawable) {
+            return;
+        }
+
+        this.clearTextDrawable = clearTextDrawable;
+        clearTextDrawable
+                .setBounds(0, 0, clearTextDrawable.getIntrinsicHeight(), clearTextDrawable.getIntrinsicHeight());
+        onClearIconVisibleChanged();
+    }
+
+    /**
+     * 设置清除Drawable
+     *
+     * @param drawableId Drawable Res Id
+     */
+    public void setClearTextDrawable(@DrawableRes int drawableId) {
+        this.clearTextDrawable = ResUtil.getDrawable(getContext(), drawableId);
+        clearTextDrawable
+                .setBounds(0, 0, clearTextDrawable.getIntrinsicHeight(), clearTextDrawable.getIntrinsicHeight());
+        onClearIconVisibleChanged();
+    }
+
+    /**
+     * 没有焦点时是否显示清除Drawable
+     *
+     * @return {@link #showClearDrawableNoFocus}
+     */
+    public boolean isShowClearDrawableNoFocus() {
+        return showClearDrawableNoFocus;
+    }
+
+    /**
+     * 设置没有焦点时是否显示清除Drawable
+     *
+     * @param showClearDrawableNoFocus {@code true} 显示. {@code false} 不显示.
+     */
+    public void setShowClearDrawableNoFocus(boolean showClearDrawableNoFocus) {
+        if(this.showClearDrawableNoFocus != showClearDrawableNoFocus) {
+            this.showClearDrawableNoFocus = showClearDrawableNoFocus;
+            onClearIconVisibleChanged();
+        }
     }
 }

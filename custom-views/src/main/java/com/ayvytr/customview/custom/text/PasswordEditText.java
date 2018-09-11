@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
@@ -16,6 +18,8 @@ import android.view.inputmethod.EditorInfo;
 
 import com.ayvytr.customview.R;
 import com.ayvytr.customview.util.DensityUtil;
+import com.ayvytr.customview.util.DrawableUtil;
+import com.ayvytr.customview.util.ResUtil;
 
 /**
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
@@ -63,10 +67,12 @@ public class PasswordEditText extends AppCompatEditText {
         if(showPasswordDrawable == null) {
             showPasswordDrawable = ContextCompat.getDrawable(getContext(), R.drawable.ic_show_password);
         }
+        DrawableUtil.setBounds(showPasswordDrawable);
         hidePasswordDrawable = ta.getDrawable(R.styleable.PasswordEditText_hidePasswordDrawable);
         if(hidePasswordDrawable == null) {
             hidePasswordDrawable = ContextCompat.getDrawable(getContext(), R.drawable.ic_hide_password);
         }
+        DrawableUtil.setBounds(hidePasswordDrawable);
 
         clickMode = ta.getBoolean(R.styleable.PasswordEditText_clickMode, false);
         showDrawableNoFocus = ta.getBoolean(R.styleable.PasswordEditText_showDrawableNoFocus, false);
@@ -100,20 +106,87 @@ public class PasswordEditText extends AppCompatEditText {
         onPasswordDrawableChanged();
     }
 
-    public void setShowPasswordDrawable(Drawable showPasswordDrawable) {
+    /**
+     * 获取显示密码Drawable
+     *
+     * @return {@link #showPasswordDrawable}
+     */
+    public Drawable getShowPasswordDrawable() {
+        return showPasswordDrawable;
+    }
+
+    /**
+     * 获取隐藏密码Drawable
+     *
+     * @return {@link #hidePasswordDrawable}
+     */
+    public Drawable getHidePasswordDrawable() {
+        return hidePasswordDrawable;
+    }
+
+    /**
+     * 设置显示密码Drawable
+     *
+     * @param showPasswordDrawable Drawable
+     */
+    public void setShowPasswordDrawable(@NonNull Drawable showPasswordDrawable) {
+        if(showPasswordDrawable == null || this.showPasswordDrawable == showPasswordDrawable) {
+            return;
+        }
+
         this.showPasswordDrawable = showPasswordDrawable;
+        DrawableUtil.setBounds(showPasswordDrawable);
+        onPasswordDrawableChanged();
     }
 
+    /**
+     * 设置显示密码Drawable
+     *
+     * @param showPasswordDrawableId Drawable Res id
+     */
+    public void setShowPasswordDrawable(@DrawableRes int showPasswordDrawableId) {
+        setShowPasswordDrawable(ResUtil.getDrawable(getContext(), showPasswordDrawableId));
+    }
+
+    /**
+     * 设置隐藏密码Drawable
+     *
+     * @param hidePasswordDrawable Drawable
+     */
     public void setHidePasswordDrawable(Drawable hidePasswordDrawable) {
+        if(hidePasswordDrawable == null || this.hidePasswordDrawable == hidePasswordDrawable) {
+            return;
+        }
         this.hidePasswordDrawable = hidePasswordDrawable;
+        DrawableUtil.setBounds(hidePasswordDrawable);
+        onPasswordDrawableChanged();
     }
 
+    /**
+     * 设置隐藏密码Drawable
+     *
+     * @param hidePasswordDrawableId Drawable Res id
+     */
+    public void setHidePasswordDrawable(@DrawableRes int hidePasswordDrawableId) {
+        setHidePasswordDrawable(ResUtil.getDrawable(getContext(), hidePasswordDrawableId));
+    }
+
+    /**
+     * 设置点击显示/隐藏Drawable模式
+     *
+     * @param clickMode {@code true} 点击显示再次点击隐藏密码. {@code false} 触摸显示密码，抬起隐藏密码.
+     */
     public void setClickMode(boolean clickMode) {
         if(this.clickMode != clickMode) {
             this.clickMode = clickMode;
         }
     }
 
+    /**
+     * 设置是否在没有焦点时显示Drawable
+     *
+     * @param showDrawableNoFocus {@code true} 没有焦点时显示Drawable. {@code false} 没有焦点时不显示Drawable.
+     */
     public void setShowDrawableNoFocus(boolean showDrawableNoFocus) {
         if(this.showDrawableNoFocus != showDrawableNoFocus) {
             this.showDrawableNoFocus = showDrawableNoFocus;
@@ -121,6 +194,11 @@ public class PasswordEditText extends AppCompatEditText {
         }
     }
 
+    /**
+     * 获取是否在没有焦点时显示Drawable.
+     *
+     * @return {@link #showPasswordDrawable}
+     */
     public boolean isShowDrawableNoFocus() {
         return showDrawableNoFocus;
     }
@@ -168,6 +246,9 @@ public class PasswordEditText extends AppCompatEditText {
         onPasswordDrawableChanged();
     }
 
+    /**
+     * 切换隐藏/显示密码
+     */
     private void handlePasswordVisibility() {
         isShowingPwd = !isShowingPwd;
         onPasswordDrawableChanged();
@@ -177,6 +258,12 @@ public class PasswordEditText extends AppCompatEditText {
     }
 
 
+    /**
+     * 判断输入类型是不是密码.
+     *
+     * @param inputType {@link InputType}
+     * @return {@code true} 是密码输入类型 {@code false} 不是密码输入类型
+     */
     public static boolean isPasswordInputType(int inputType) {
         final int variation =
                 inputType & (EditorInfo.TYPE_MASK_CLASS | EditorInfo.TYPE_MASK_VARIATION);
@@ -188,16 +275,19 @@ public class PasswordEditText extends AppCompatEditText {
                 == (EditorInfo.TYPE_CLASS_NUMBER | EditorInfo.TYPE_NUMBER_VARIATION_PASSWORD);
     }
 
+    /**
+     * Drawable变更时需要调用的方法，实时更新Drawable.
+     */
     private void onPasswordDrawableChanged() {
         boolean isNotEmpty = !getText().toString().isEmpty();
         this.isDrawableShowing = isNotEmpty && (showDrawableNoFocus || hasFocus());
 
         Drawable[] cs = getCompoundDrawables();
         if(isDrawableShowing) {
-            setCompoundDrawablesWithIntrinsicBounds(cs[0], cs[1],
+            setCompoundDrawables(cs[0], cs[1],
                     isShowingPwd ? showPasswordDrawable : hidePasswordDrawable, cs[3]);
         } else {
-            setCompoundDrawablesWithIntrinsicBounds(cs[0], cs[1], null, cs[3]);
+            setCompoundDrawables(cs[0], cs[1], null, cs[3]);
         }
     }
 }
