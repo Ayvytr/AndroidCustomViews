@@ -26,7 +26,7 @@
 
 5. ClearableEditText <font color=red>**0.2.0新加入**</font> 一键清空文本的EditText，直接继承AppCompatEditText  [使用方法](#ClearableEditText)
 
-6. PasswordEditText <font color=red>**0.2.0新加入**</font>点击或触摸显示/隐藏密码的EditText，直接继承AppCompatEditText [使用方法](#PasswordEditText)
+6. PasswordEditText <font color=red>**0.2.0新加入**</font> 点击或触摸显示/隐藏密码的EditText，直接继承AppCompatEditText [使用方法](#PasswordEditText)
 
     
 
