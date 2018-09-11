@@ -40,9 +40,9 @@ ___
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | ![img](https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview.gif) | ![img](https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview1.jpg) | ![img](https://github.com/Carbs0126/Screenshot/blob/master/numberpickerview2.jpg) |
 
-| QuickIndexView                                               | SuperEditText                              | ClearableEditText                      |
-| ------------------------------------------------------------ | ------------------------------------------ | -------------------------------------- |
-| <img src="screenshots/QuickIndexView.gif" width="50%" height="50%" /> | <img src="screenshots/SuperEditText.gif"/> | ![](screenshots/ClearableEditText.gif) |
+| QuickIndexView                                               | SuperEditText                              | ClearableEditText                              |
+| ------------------------------------------------------------ | ------------------------------------------ | ---------------------------------------------- |
+| <img src="screenshots/QuickIndexView.gif" width="50%" height="50%" /> | <img src="screenshots/SuperEditText.gif"/> | <img src="screenshots/ClearableEditText.gif"/> |
 
 | PasswordEditText                      |
 | ------------------------------------- |
