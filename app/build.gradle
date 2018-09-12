@@ -24,8 +24,8 @@ android {
     }
 }
 
-def testJcenter = false
-//def testJcenter = true
+//def testJcenter = false
+def testJcenter = true
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -44,7 +44,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
 
     if (testJcenter) {
-        implementation 'com.ayvytr:custom-views:0.1.2'
+        implementation 'com.ayvytr:custom-views:0.2.0'
     } else {
         implementation project(':custom-views')
     }
