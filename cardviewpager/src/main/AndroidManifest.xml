@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.ayvytr.androidcustomviews"
+<manifest package="com.ayvytr.cardviewpager"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -18,14 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".testactivity.QuickIndexViewActivity"/>
-        <activity android:name=".testactivity.SuperEditTextActivity"/>
-        <activity android:name=".testactivity.numberpickerview.NumberPickerActivity"/>
-        <activity android:name=".testactivity.numberpickerview.ActivityTimePicker"/>
-        <activity android:name=".testactivity.ClearableEditTextActivity">
-        </activity>
-        <activity android:name=".testactivity.PasswordEditTextActivity">
-        </activity>
+        <activity android:name=".cardviewpager.CardViewPagerActivity"/>
     </application>
 
 </manifest>
