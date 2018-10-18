@@ -41,6 +41,7 @@ class StatusViewActivity : AppCompatActivity() {
             emptyView.backgroundColor = getColor2(R.color.purple)
             statusView.setEmptyView(emptyView)
         }
+        btnShowContent.onClick { statusView.showContent() }
 
         statusView.setOnStatusClickListener(object : StatusView.OnStatusClickListener {
             override fun onLoading(statusView: StatusView?) {

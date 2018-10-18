@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -24,13 +25,15 @@ import com.ayvytr.customview.R;
  * @since 0.9.0
  */
 public class StatusView extends RelativeLayout {
-    public static final int NONE = 0;
+    public static final int NONE = NO_ID;
+    public static final int CONTENT = 0;
     public static final int LOADING = 1;
     public static final int ERROR = 2;
     public static final int EMPTY = 3;
+
     private LayoutParams defaultLp;
 
-    @IntDef({LOADING, ERROR, EMPTY, NONE})
+    @IntDef({LOADING, ERROR, EMPTY, NONE, CONTENT})
     private @interface Status {}
 
     public StatusView(Context context) {
@@ -57,6 +60,7 @@ public class StatusView extends RelativeLayout {
     private View loadingView;
     private View errorView;
     private View emptyView;
+    private View contentView;
 
     private OnClickListener onLoadingClickListener;
     private OnClickListener onErrorClickListener;
@@ -79,6 +83,15 @@ public class StatusView extends RelativeLayout {
         int emptyLayoutId = ta.getResourceId(R.styleable.StatusView_emptyView, R.layout.layout_empty);
         emptyView = LayoutInflater.from(getContext()).inflate(emptyLayoutId, null);
         addView(emptyView, defaultLp);
+
+        int contentLayoutId = ta.getResourceId(R.styleable.StatusView_contentView, R.layout.layout_default_content);
+        contentView = LayoutInflater.from(getContext()).inflate(contentLayoutId, null);
+        LayoutParams contentLp = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT);
+        addView(contentView, contentLp);
+
+        int status = ta.getInt(R.styleable.StatusView_status, LOADING);
+        setCurrentStatus(status);
 
         resetDefaultMsg();
         initListener();
@@ -142,6 +155,7 @@ public class StatusView extends RelativeLayout {
         errorView.setVisibility(View.GONE);
         emptyView.setVisibility(View.GONE);
         loadingView.setVisibility(View.GONE);
+        contentView.setVisibility(View.GONE);
         mStatus = NONE;
     }
 
@@ -223,9 +237,22 @@ public class StatusView extends RelativeLayout {
             case EMPTY:
                 showEmpty();
                 break;
+            case CONTENT:
+                showContent();
+                break;
             default:
                 break;
         }
+    }
+
+    public void showContent() {
+        if(mStatus == CONTENT) {
+            return;
+        }
+
+        hideAllViews();
+        contentView.setVisibility(View.VISIBLE);
+        mStatus = CONTENT;
     }
 
     public void resetDefaultMsg() {
@@ -267,6 +294,19 @@ public class StatusView extends RelativeLayout {
             }
             addView(this.emptyView, getDefaultLayoutParams());
             attachEmptyClickListener();
+        }
+    }
+
+    public void setContentView(@NonNull View contentView) {
+        if(contentView != null) {
+            removeView(this.contentView);
+            this.contentView = contentView;
+            if(mStatus != CONTENT) {
+                this.contentView.setVisibility(View.GONE);
+            }
+            LayoutParams contentLp = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT);
+            addView(this.contentView, contentLp);
         }
     }
 

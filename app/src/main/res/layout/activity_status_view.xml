@@ -75,6 +75,14 @@
         app:layout_constraintLeft_toRightOf="@id/btnResetMsg"
         app:layout_constraintTop_toBottomOf="@id/btnShowLoadingWithText"/>
 
+    <Button
+        android:id="@+id/btnShowContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="显示Content"
+        app:layout_constraintLeft_toRightOf="@id/btnChangeView"
+        app:layout_constraintTop_toBottomOf="@id/btnShowLoadingWithText"/>
+
     <com.ayvytr.customview.loading.StatusView
         android:id="@+id/statusView"
         android:layout_width="match_parent"
