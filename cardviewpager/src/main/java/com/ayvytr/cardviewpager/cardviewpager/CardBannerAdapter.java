@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.ayvytr.cardviewpager.R;
-import com.ayvytr.easykotlin.context.DensityKt;
+import com.ayvytr.easykotlin.context.ContextKt;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
@@ -49,7 +49,7 @@ public class CardBannerAdapter extends PagerAdapter {
              .apply(requestOptions)
              .into(iv);
 
-        cardView.setMaxCardElevation(DensityKt.dp2px(container.getContext(), 5));
+        cardView.setMaxCardElevation(ContextKt.dp2px(container.getContext(), 5));
         container.addView(view);
         return view;
     }

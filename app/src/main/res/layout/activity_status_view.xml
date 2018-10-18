@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ayvytr.androidcustomviews.testactivity.StatusViewActivity">
+
+    <Button
+        android:id="@+id/btnShowLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loading"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/btnShowError"/>
+
+    <Button
+        android:id="@+id/btnShowError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Error"
+        app:layout_constraintLeft_toRightOf="@id/btnShowLoading"
+        app:layout_constraintRight_toLeftOf="@id/btnShowEmpty"/>
+
+    <Button
+        android:id="@+id/btnShowEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Empty"
+        app:layout_constraintLeft_toRightOf="@id/btnShowError"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <Button
+        android:id="@+id/btnShowLoadingWithText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loading with Text"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/btnShowError"
+        app:layout_constraintTop_toBottomOf="@id/btnShowLoading"/>
+
+    <Button
+        android:id="@+id/btnShowErrorWithText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Error with Text"
+        app:layout_constraintLeft_toRightOf="@id/btnShowLoading"
+        app:layout_constraintRight_toLeftOf="@id/btnShowEmpty"
+        app:layout_constraintTop_toBottomOf="@id/btnShowLoading"/>
+
+    <Button
+        android:id="@+id/btnShowEmptyWithText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Empty with Text"
+        app:layout_constraintLeft_toRightOf="@id/btnShowError"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnShowLoading"/>
+
+    <Button
+        android:id="@+id/btnResetMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="重置默认Msg"
+        app:layout_constraintTop_toBottomOf="@id/btnShowLoadingWithText"/>
+
+    <Button
+        android:id="@+id/btnChangeView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="修改View"
+        app:layout_constraintLeft_toRightOf="@id/btnResetMsg"
+        app:layout_constraintTop_toBottomOf="@id/btnShowLoadingWithText"/>
+
+    <com.ayvytr.customview.loading.StatusView
+        android:id="@+id/statusView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnResetMsg"/>
+
+</android.support.constraint.ConstraintLayout>
