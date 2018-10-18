@@ -18,7 +18,10 @@ import com.ayvytr.customview.R;
 
 
 /**
- * @author admin
+ * 状态View，包含 {@link #LOADING}, {@link #ERROR}, {@link #EMPTY}, {@link #NONE} 4种状态，专用于状态切换的根布局.
+ *
+ * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
+ * @since 0.9.0
  */
 public class StatusView extends RelativeLayout {
     public static final int NONE = 0;
