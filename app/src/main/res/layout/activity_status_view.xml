@@ -87,7 +87,22 @@
         android:id="@+id/statusView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_0dp"
+        app:status="LOADING"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnResetMsg"/>
+        app:layout_constraintTop_toBottomOf="@id/btnResetMsg">
+
+        <Button
+            android:id="@+id/btn"
+            android:text="aaa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btn2"
+            android:text="fff"
+            android:layout_below="@id/btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </com.ayvytr.customview.loading.StatusView>
 
 </android.support.constraint.ConstraintLayout>

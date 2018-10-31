@@ -6,11 +6,11 @@
               android:orientation="vertical">
 
     <ProgressBar
-        android:layout_width="50dp"
-        android:layout_height="50dp"/>
+        android:layout_width="64dp"
+        android:layout_height="64dp"/>
 
     <TextView
-        android:id="@+id/tvMsg"
+        android:id="@+id/tv_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/_10dp"
