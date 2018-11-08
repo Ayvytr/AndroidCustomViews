@@ -14,9 +14,11 @@
         </attr>
     </declare-styleable>
 
+    <!--默认状态为COTNENT，因为布局文件预览时，设置为其他状态看不到预览-->
     <style name="LoadingViewDefaultStyle">
         <item name="loadingView">@layout/layout_loading</item>
         <item name="errorView">@layout/layout_error</item>
         <item name="emptyView">@layout/layout_empty</item>
+        <item name="status">CONTENT</item>
     </style>
 </resources>

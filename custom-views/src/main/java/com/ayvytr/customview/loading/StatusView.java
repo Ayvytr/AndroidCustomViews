@@ -20,7 +20,16 @@ import com.ayvytr.customview.R;
 
 
 /**
- * 状态View，包含 {@link #LOADING}, {@link #ERROR}, {@link #EMPTY}, {@link #NONE} 4种状态，专用于状态切换的根布局.
+ * 状态View，包含 {@link #LOADING}, {@link #ERROR}, {@link #EMPTY}, {@link #NONE} 4种状态，专用于状态切换的根布局，并且加入了
+ * TextView设置当前状态的显示文本（注意id必须是tv_msg才可以，或者如果你的项目这几个状态提示文本固定没有变化，那就忽略这个问题）.
+ * 注意：为了看到布局预览，在布局文件中看预览的时候 status 属性一定要为 CONTENT，或者不设置 status属性（默认为CONTENT属性）.
+ * 并且建议在Java代码中页面创建时主动设置一次当前状态.
+ * @see #showLoading()
+ * @see #showLoading(String)
+ * @see #showError()
+ * @see #showError(String)
+ * @see #showEmpty()
+ * @see #showEmpty(String)
  *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
  * @since 0.9.0
@@ -76,14 +85,17 @@ public class StatusView extends RelativeLayout {
         int loadingLayoutId = ta.getResourceId(R.styleable.StatusView_loadingView, R.layout.layout_loading);
         loadingView = LayoutInflater.from(getContext()).inflate(loadingLayoutId, this, false);
         addView(loadingView, defaultLp);
+        loadingView.setVisibility(View.GONE);
 
         int errorLayoutId = ta.getResourceId(R.styleable.StatusView_errorView, R.layout.layout_error);
         errorView = LayoutInflater.from(getContext()).inflate(errorLayoutId, this, false);
         addView(errorView, defaultLp);
+        errorView.setVisibility(View.GONE);
 
         int emptyLayoutId = ta.getResourceId(R.styleable.StatusView_emptyView, R.layout.layout_empty);
         emptyView = LayoutInflater.from(getContext()).inflate(emptyLayoutId, this, false);
         addView(emptyView, defaultLp);
+        emptyView.setVisibility(View.GONE);
 
         int contentLayoutId = ta.getResourceId(R.styleable.StatusView_contentView, NO_ID);
         if(contentLayoutId > 0) {
@@ -93,7 +105,7 @@ public class StatusView extends RelativeLayout {
             addView(contentView, contentLp);
         }
 
-        mStatus = ta.getInt(R.styleable.StatusView_status, LOADING);
+        mStatus = ta.getInt(R.styleable.StatusView_status, CONTENT);
 
         resetDefaultMsg();
         initListener();
@@ -159,7 +171,9 @@ public class StatusView extends RelativeLayout {
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         //在onLayout调用之前，getChildCount获取的子View数量没有把布局文件中的子View算在内，所以在这里设置状态.
-        setCurrentStatus(mStatus);
+        if(mStatus != CONTENT) {
+            setCurrentStatus(mStatus);
+        }
         super.onLayout(changed, l, t, r, b);
     }
 
