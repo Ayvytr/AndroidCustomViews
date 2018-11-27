@@ -1,4 +1,4 @@
-[![jCenter](https://img.shields.io/badge/jCenter-0.2.0-red.svg)](https://bintray.com/ayvytr/maven/custom-views/_latestVersion)  [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
+[![jCenter](https://img.shields.io/badge/jCenter-1.0.0-red.svg)](https://bintray.com/ayvytr/maven/custom-views/_latestVersion)  [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 <h1 id="AndroidCustomViews">AndroidCustomViews</h1>
 
@@ -8,27 +8,19 @@
 
 ## 加入Gradle依赖
 
-	implementation 'com.ayvytr:custom-views:0.2.0'
-	或者
-	compile 'com.ayvytr:custom-views:0.2.0'
+	implementation 'com.ayvytr:custom-views:1.0.0'
 
 
 
 ## 自定义控件列表
 
 1. NumberPickerView 数字选择控件，支持多行和多种选项的数字选择控件 [使用方法](#NumberPickerView)
-
 2. QuickIndexView 通讯录右侧字母索引控件 [使用方法](#QuickIndexView)
-
 3. SuperEditText 可以一键清空，点击图标显示/隐藏密码的EditText  [使用方法](#SuperEditText)
-
 4. SingleTextView 单行，居中，文本超出一行尾部省略的TextView 
-
-5. ClearableEditText <font color=red>**0.2.0新加入**</font> 一键清空文本的EditText，直接继承AppCompatEditText  [使用方法](#ClearableEditText)
-
-6. PasswordEditText <font color=red>**0.2.0新加入**</font> 点击或触摸显示/隐藏密码的EditText，直接继承AppCompatEditText [使用方法](#PasswordEditText)
-
-    
+5. ClearableEditText 一键清空文本的EditText，直接继承AppCompatEditText  [使用方法](#ClearableEditText)
+6. PasswordEditText  点击或触摸显示/隐藏密码的EditText，直接继承AppCompatEditText [使用方法](#PasswordEditText)
+7. StatusView 状态管理View，继承自RelativeLayout，可以设置显示内容/empty view/error view/loading view，使用灵活，非常适合做Android状态管理 [使用方法](#StatusView)
 
 ___
 
@@ -156,7 +148,7 @@ OnValueChangeListenerInScrolling//滑动过程中响应value change
 ```
 
 或者直接使用NumberPickerView提供的方法：<br>
-    `refreshByNewDisplayedValues`(String[] display)<br>
+​    `refreshByNewDisplayedValues`(String[] display)<br>
 使用此方法时需要注意保证数据改变前后的minValue值不变，以及设置的display不能够为null，且长度不能够为0。
   3)添加了滑动过程中响应value change的函数
 
@@ -165,8 +157,8 @@ OnValueChangeListenerInScrolling//滑动过程中响应value change
 ```
 
 4.另外，NumberPickerView提供了平滑滚动的方法：<br>
-    `public void smoothScrollToValue(int fromValue, int toValue, boolean needRespond)`<br>
-    
+​    `public void smoothScrollToValue(int fromValue, int toValue, boolean needRespond)`<br>
+​    
 此方法与`setValue(int)`方法相同之处是可以动态设置当前显示的item，不同之处在于此方法可以使`NumberPickerView`平滑的从滚动，即从`fromValue`值挑选最近路径滚动到`toValue`，第三个参数`needRespond`用来标识在滑动过程中是否响应`onValueChanged`回调函数。因为多个`NumberPickerView`在联动时，很可能不同的`NumberPickerView`的停止时间不同，如果在此时响应了`onValueChanged`回调，就可能再次联动，造成数据不准确，将`needRespond`置为`false`，可避免在滑动中响应回调函数。<br>
 
 另外，在使用此方法或者间接调用此方法时，需要注意最好不要在`onCreate(Bundle savedInstanceState)`方法中调用，因为scroll动画需要一定时间，如需确要在`onCreate(Bundle savedInstanceState)`中调用，请使用如下方式：
@@ -252,7 +244,7 @@ ___
     app:indexArray="@array/defaultQuickIndexViewLetters"/>
 ```
 
-	
+​	
 
 #### API文档
 
@@ -385,6 +377,75 @@ setShowPasswordDrawable(int showPasswordDrawableId) 设置显示密码Drawable
         <attr name="showDrawableNoFocus" format="boolean"/> 当没有焦点时是否显示Drawable
     </declare-styleable>
 ```
+
+------
+
+<h3 id="StatusView">StatusView</h3>
+
+#### 使用方法
+
+`使用StatusView自定义属性设置你自己的loading view等布局。默认status是CONTENT。content view可以使用自定义属性contentView或者在StatusView内直接加入你自己的View：`
+
+        <com.ayvytr.customview.loading.StatusView
+            app:loadingView="@layout/layout_loading"
+            app:emptyView="@layout/layout_empty"
+            app:errorView="@layout/layout_error"
+            app:contentView="@layout/layout_content"
+            app:status="LOADING"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+    
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="my view"
+                android:layout_height="wrap_content"/>
+        </com.ayvytr.customview.loading.StatusView>
+
+
+#### API 文档
+
+| showLoading()                     |
+| --------------------------------- |
+| showLoading(java.lang.String)     |
+| showError()                       |
+| showError(java.lang.String)       |
+| showEmpty()                       |
+| showEmpty(java.lang.String)       |
+| getCurrentStatus                  |
+| setCurrentStatus                  |
+| showContent                       |
+| resetDefaultMsg                   |
+| setLoadingView(int)               |
+| setLoadingView(android.view.View) |
+| setErrorView(int)                 |
+| setErrorView(android.view.View)   |
+| setEmptyView(int)                 |
+| setEmptyView(android.view.View)   |
+| setContentView(int)               |
+| setContentView(android.view.View) |
+| setOnStatusClickListener          |
+
+#### 自定义属性表
+
+```
+<declare-styleable name="StatusView">
+    <attr name="loadingView" format="reference"/>
+    <attr name="errorView" format="reference"/>
+    <attr name="emptyView" format="reference"/>
+    <attr name="contentView" format="reference"/>
+    <attr name="status" format="enum">
+        <enum name="NONE" value="-1"/>
+        <enum name="CONTENT" value="0"/>
+        <enum name="LOADING" value="1"/>
+        <enum name="ERROR" value="2"/>
+        <enum name="EMPTY" value="3"/>
+    </attr>
+</declare-styleable>
+```
+
+
+
+------
 
 
 
