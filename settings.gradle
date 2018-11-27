@@ -1,1 +1,2 @@
 include ':app', ':custom-views', ':cardviewpager', ':constraintlayoutdemo'
+include ':custom-views'
