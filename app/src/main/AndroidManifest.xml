@@ -28,6 +28,8 @@
         </activity>
         <activity android:name=".testactivity.StatusViewActivity">
         </activity>
+        <activity android:name=".testactivity.EditTextActivity">
+        </activity>
     </application>
 
 </manifest>

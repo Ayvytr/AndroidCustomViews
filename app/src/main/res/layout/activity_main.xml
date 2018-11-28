@@ -42,4 +42,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="LoadingviewTest"/>
+
+    <Button
+        android:id="@+id/btnEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="EditText"/>
 </LinearLayout>
