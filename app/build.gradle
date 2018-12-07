@@ -43,7 +43,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
 
     if (testJcenter) {
-        implementation 'com.ayvytr:custom-views:0.2.0'
+        implementation 'com.ayvytr:custom-views:1.1.0'
     } else {
         implementation project(':custom-views')
     }

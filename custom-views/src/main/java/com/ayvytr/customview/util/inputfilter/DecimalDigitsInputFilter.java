@@ -4,7 +4,8 @@ import android.text.InputFilter;
 import android.text.Spanned;
 
 /**
- * 小数位数筛选器，支持大于0的自然数，默认2位小数，小于等于0的数忽略.
+ * 小数位数筛选器，支持大于0的自然数，默认2位小数，小于等于0的数忽略，注意要配合 {@link android.widget.EditText#setInputType(int)}
+ * 使用，限制只能输入数字.
  *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
  * @since 1.0.1

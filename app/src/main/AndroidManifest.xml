@@ -30,6 +30,8 @@
         </activity>
         <activity android:name=".testactivity.EditTextActivity">
         </activity>
+        <activity android:name=".testactivity.InputFilterActivity">
+        </activity>
     </application>
 
 </manifest>

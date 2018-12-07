@@ -27,5 +27,6 @@ class MainActivity : AppCompatActivity() {
         btnPasswordEditText.onClick { startActivity<PasswordEditTextActivity>() }
         btnLoadingView.onClick { startActivity<StatusViewActivity>() }
         btnEditText.onClick { startActivity<EditTextActivity>() }
+        btnInputFilter.onClick { startActivity<InputFilterActivity>() }
     }
 }

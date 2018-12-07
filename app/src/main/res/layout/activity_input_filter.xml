@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ayvytr.androidcustomviews.testactivity.InputFilterActivity">
+
+    <TextView
+        android:id="@+id/tvDd"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50dp"
+        android:gravity="center_vertical"
+        android:text="小数位数InputFilter"/>
+
+    <EditText
+        android:id="@+id/et"
+        app:layout_constraintTop_toBottomOf="@id/tvDd"
+        android:inputType="numberDecimal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+</android.support.constraint.ConstraintLayout>
