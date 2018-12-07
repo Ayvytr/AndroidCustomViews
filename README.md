@@ -1,4 +1,4 @@
-[![jCenter](https://img.shields.io/badge/jCenter-1.0.0-red.svg)](https://bintray.com/ayvytr/maven/custom-views/_latestVersion)  [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
+[![jCenter](https://img.shields.io/badge/jCenter-1.1.0-red.svg)](https://bintray.com/ayvytr/maven/custom-views/_latestVersion)  [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 <h1 id="AndroidCustomViews">AndroidCustomViews</h1>
 
@@ -8,7 +8,7 @@
 
 ## 加入Gradle依赖
 
-	implementation 'com.ayvytr:custom-views:1.0.0'
+	implementation 'com.ayvytr:custom-views:1.1.0'
 
 
 
@@ -23,6 +23,13 @@
 7. StatusView 状态管理View，继承自RelativeLayout，可以设置显示内容/empty view/error view/loading view，使用灵活，非常适合做Android状态管理 [使用方法](#StatusView)
 
 ___
+
+
+
+## 自定义工具列表
+
+1. DecimalDigitsInputFilter EditText小数位数筛选器，控制小数位数长度
+2. 
 
 
 
@@ -451,17 +458,17 @@ setShowPasswordDrawable(int showPasswordDrawableId) 设置显示密码Drawable
 
 ## ChangeLog
 
+- 1.1.0
+  - StatusView
+  - DecimalDigitsInputFilter
+- 0.2.0
+  - ClearableEditText
+  - PasswordEditText
 - 0.1.0
-
   - NumberPickerView 
   - QuickIndexView
   - SuperEditText
   - SingleTextView
-
-- 0.2.0
-
-  - ClearableEditText
-  - PasswordEditText
 
 
 
