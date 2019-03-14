@@ -12,7 +12,6 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -24,22 +23,24 @@ import com.ayvytr.customview.R;
  * TextView设置当前状态的显示文本（注意id必须是tv_msg才可以，或者如果你的项目这几个状态提示文本固定没有变化，那就忽略这个问题）.
  * 注意：为了看到布局预览，在布局文件中看预览的时候 status 属性一定要为 CONTENT，或者不设置 status属性（默认为CONTENT属性）.
  * 并且建议在Java代码中页面创建时主动设置一次当前状态.
+ * 注意：addView时，请别添加View到0-2的索引，内部View占用了.
+ *
+ * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
  * @see #showLoading()
  * @see #showLoading(String)
  * @see #showError()
  * @see #showError(String)
  * @see #showEmpty()
  * @see #showEmpty(String)
- *
- * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
  * @since 0.9.0
+ * @since 1.3.0 修改了View管理失效问题
  */
 public class StatusView extends RelativeLayout {
     public static final int NONE = NO_ID;
-    public static final int CONTENT = 0;
-    public static final int LOADING = 1;
-    public static final int ERROR = 2;
-    public static final int EMPTY = 3;
+    public static final int LOADING = 0;
+    public static final int ERROR = 1;
+    public static final int EMPTY = 2;
+    public static final int CONTENT = 4;
 
     private LayoutParams defaultLp;
 
@@ -70,7 +71,6 @@ public class StatusView extends RelativeLayout {
     private View loadingView;
     private View errorView;
     private View emptyView;
-    private View contentView;
 
     private OnClickListener onLoadingClickListener;
     private OnClickListener onErrorClickListener;
@@ -84,26 +84,18 @@ public class StatusView extends RelativeLayout {
         TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.StatusView, defStyleAttr, defStyleRes);
         int loadingLayoutId = ta.getResourceId(R.styleable.StatusView_loadingView, R.layout.layout_loading);
         loadingView = LayoutInflater.from(getContext()).inflate(loadingLayoutId, this, false);
-        addView(loadingView, defaultLp);
+        addView(loadingView, LOADING, defaultLp);
         loadingView.setVisibility(View.GONE);
 
         int errorLayoutId = ta.getResourceId(R.styleable.StatusView_errorView, R.layout.layout_error);
         errorView = LayoutInflater.from(getContext()).inflate(errorLayoutId, this, false);
-        addView(errorView, defaultLp);
+        addView(errorView, ERROR, defaultLp);
         errorView.setVisibility(View.GONE);
 
         int emptyLayoutId = ta.getResourceId(R.styleable.StatusView_emptyView, R.layout.layout_empty);
         emptyView = LayoutInflater.from(getContext()).inflate(emptyLayoutId, this, false);
-        addView(emptyView, defaultLp);
+        addView(emptyView, EMPTY, defaultLp);
         emptyView.setVisibility(View.GONE);
-
-        int contentLayoutId = ta.getResourceId(R.styleable.StatusView_contentView, NO_ID);
-        if(contentLayoutId > 0) {
-            contentView = LayoutInflater.from(getContext()).inflate(contentLayoutId, this, false);
-            LayoutParams contentLp = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
-            addView(contentView, contentLp);
-        }
 
         mStatus = ta.getInt(R.styleable.StatusView_status, CONTENT);
 
@@ -203,6 +195,18 @@ public class StatusView extends RelativeLayout {
         showLoading(null);
     }
 
+    public View getLoadingView() {
+        return loadingView;
+    }
+
+    public View getErrorView() {
+        return errorView;
+    }
+
+    public View getEmptyView() {
+        return emptyView;
+    }
+
     /**
      * 显示Loading
      *
@@ -210,39 +214,59 @@ public class StatusView extends RelativeLayout {
      */
     public void showLoading(@Nullable String msg) {
         setMsgByTargetView(msg, loadingView);
-        hideViewByStatus();
+        getEmptyView().setVisibility(View.GONE);
+        getErrorView().setVisibility(View.GONE);
         if(loadingView.getVisibility() != View.VISIBLE) {
             loadingView.setVisibility(View.VISIBLE);
         }
+        hideContentView();
         mStatus = LOADING;
     }
 
-    /**
-     * 根据当前状态隐藏View
-     */
-    private void hideViewByStatus() {
-        int childCount = getChildCount();
-        for(int i = 0; i < childCount; i++) {
+    public void showContentView() {
+        for(int i = EMPTY + 1; i < getChildCount(); i++) {
             View child = getChildAt(i);
-            if(mStatus == LOADING && child == loadingView) {
-                continue;
+            if(child.getVisibility() != View.VISIBLE) {
+                child.setVisibility(View.VISIBLE);
             }
-
-            if(mStatus == ERROR && child == errorView) {
-                continue;
-            }
-
-            if(mStatus == EMPTY && child == emptyView) {
-                continue;
-            }
-
-            if(mStatus == CONTENT && child != loadingView && child != errorView && child != emptyView) {
-                continue;
-            }
-
-            child.setVisibility(View.GONE);
         }
     }
+
+    public void hideContentView() {
+        for(int i = EMPTY + 1; i < getChildCount(); i++) {
+            View child = getChildAt(i);
+            if(child.getVisibility() != View.GONE) {
+                child.setVisibility(View.GONE);
+            }
+        }
+    }
+
+//    /**
+//     * 根据当前状态隐藏View
+//     */
+//    private void hideViewByStatus() {
+//        int childCount = getChildCount();
+//        for(int i = 0; i < childCount; i++) {
+//            View child = getChildAt(i);
+//            if(mStatus == LOADING && child == loadingView) {
+//                continue;
+//            }
+//
+//            if(mStatus == ERROR && child == errorView) {
+//                continue;
+//            }
+//
+//            if(mStatus == EMPTY && child == emptyView) {
+//                continue;
+//            }
+//
+//            if(mStatus == CONTENT && child != loadingView && child != errorView && child != emptyView) {
+//                continue;
+//            }
+//
+//            child.setVisibility(View.GONE);
+//        }
+//    }
 
     /**
      * 显示Error
@@ -258,10 +282,12 @@ public class StatusView extends RelativeLayout {
      */
     public void showError(@Nullable String msg) {
         setMsgByTargetView(msg, errorView);
-        hideViewByStatus();
+        getLoadingView().setVisibility(View.GONE);
+        getEmptyView().setVisibility(View.GONE);
         if(errorView.getVisibility() != View.VISIBLE) {
             errorView.setVisibility(View.VISIBLE);
         }
+        hideContentView();
         mStatus = ERROR;
     }
 
@@ -279,10 +305,12 @@ public class StatusView extends RelativeLayout {
      */
     public void showEmpty(@Nullable String msg) {
         setMsgByTargetView(msg, emptyView);
-        hideViewByStatus();
+        getLoadingView().setVisibility(View.GONE);
+        getErrorView().setVisibility(View.GONE);
         if(emptyView.getVisibility() != View.VISIBLE) {
             emptyView.setVisibility(View.VISIBLE);
         }
+        hideContentView();
         mStatus = EMPTY;
     }
 
@@ -322,19 +350,16 @@ public class StatusView extends RelativeLayout {
      * 显示Content
      */
     public void showContent() {
-        hideViewByStatus();
-        if(contentView != null) {
-            contentView.setVisibility(View.VISIBLE);
-        }
+        getLoadingView().setVisibility(View.GONE);
+        getErrorView().setVisibility(View.GONE);
+        getEmptyView().setVisibility(View.GONE);
+
+        showContentView();
 
         int childCount = getChildCount();
         if(childCount > 0) {
-            for(int i = 0; i < childCount; i++) {
+            for(int i = EMPTY + 1; i < getChildCount(); i++) {
                 View child = getChildAt(i);
-                if(child == loadingView || child == errorView || child == emptyView) {
-                    continue;
-                }
-
                 if(child.getVisibility() != View.VISIBLE) {
                     child.setVisibility(View.VISIBLE);
                 }
@@ -377,7 +402,7 @@ public class StatusView extends RelativeLayout {
         if(mStatus != LOADING) {
             this.loadingView.setVisibility(View.GONE);
         }
-        addView(this.loadingView, getDefaultLayoutParams());
+        addView(this.loadingView, LOADING, getDefaultLayoutParams());
         attachLoadingClickListener();
     }
 
@@ -401,7 +426,7 @@ public class StatusView extends RelativeLayout {
         if(mStatus != ERROR) {
             this.errorView.setVisibility(View.GONE);
         }
-        addView(this.errorView, getDefaultLayoutParams());
+        addView(this.errorView, ERROR, getDefaultLayoutParams());
         attachErrorClickListener();
     }
 
@@ -425,41 +450,10 @@ public class StatusView extends RelativeLayout {
         if(mStatus != EMPTY) {
             this.emptyView.setVisibility(View.GONE);
         }
-        addView(this.emptyView, getDefaultLayoutParams());
+        addView(this.emptyView, EMPTY, getDefaultLayoutParams());
         attachEmptyClickListener();
     }
 
-    /**
-     * 设置Content view
-     *
-     * @param layoutId Content layout id
-     */
-    public void setContentView(@LayoutRes int layoutId) {
-        setContentView(inflateView(layoutId));
-    }
-
-    /**
-     * 设置Content View
-     *
-     * @param contentView Content view
-     */
-    public void setContentView(@Nullable View contentView) {
-        if(this.contentView != null) {
-            removeView(this.contentView);
-        }
-
-        this.contentView = contentView;
-        if(this.contentView != null) {
-            LayoutParams contentLp = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
-            addView(this.contentView, contentLp);
-
-            if(mStatus != CONTENT) {
-                this.contentView.setVisibility(View.GONE);
-            }
-
-        }
-    }
 
     /**
      * 设置状态View点击监听

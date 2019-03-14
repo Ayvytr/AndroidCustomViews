@@ -44,6 +44,12 @@
         android:text="LoadingviewTest"/>
 
     <Button
+        android:id="@+id/btnLoadingView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LoadingviewTest2"/>
+
+    <Button
         android:id="@+id/btnEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
