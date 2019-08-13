@@ -83,25 +83,32 @@
         app:layout_constraintLeft_toRightOf="@id/btnChangeView"
         app:layout_constraintTop_toBottomOf="@id/btnShowLoadingWithText"/>
 
+    <Button
+        android:id="@+id/btnListDemo"
+        android:text="StatusView加载List效果"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btnResetMsg"/>
+
     <com.ayvytr.customview.loading.StatusView
         android:id="@+id/statusView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnResetMsg">
+        app:layout_constraintTop_toBottomOf="@id/btnListDemo">
 
         <Button
             android:id="@+id/btn"
-            android:text="aaa"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="aaa"/>
 
         <Button
             android:id="@+id/btn2"
-            android:text="fff"
-            android:layout_below="@id/btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn"
+            android:text="fff"/>
     </com.ayvytr.customview.loading.StatusView>
 
 </android.support.constraint.ConstraintLayout>

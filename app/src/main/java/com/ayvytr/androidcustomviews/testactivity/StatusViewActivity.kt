@@ -7,6 +7,7 @@ import com.ayvytr.customview.loading.StatusView
 import com.ayvytr.easykotlin.context.toast
 import kotlinx.android.synthetic.main.activity_status_view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
+import org.jetbrains.anko.startActivity
 
 class StatusViewActivity : AppCompatActivity() {
 
@@ -30,6 +31,7 @@ class StatusViewActivity : AppCompatActivity() {
             statusView.setEmptyView(R.layout.test_empty)
         }
         btnShowContent.onClick { statusView.showContent() }
+        btnListDemo.onClick { startActivity<StatusView2Activity>() }
 
         statusView.setOnStatusClickListener(object : StatusView.OnStatusClickListener {
             override fun onLoading(statusView: StatusView?) {

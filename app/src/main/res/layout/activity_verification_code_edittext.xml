@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@android:color/white"
+              android:orientation="vertical">
+
+    <com.ayvytr.customview.custom.text.VerificationCodeEditText
+        android:id="@+id/vc_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:inputType="number"
+        android:textColor="@color/light_gray"
+        android:textSize="40sp"
+        app:selectedTextColor="@color/colorAccent"
+        app:textBgColor="@color/dark_gray"
+        app:textBgMargin="10dp"
+        app:textBgSelectedColor="@color/colorAccent"
+        app:textBgStrokeWidth="2dp"
+        app:textBgType="underline"
+        tools:text="12"/>
+
+    <com.ayvytr.customview.custom.text.VerificationCodeEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:inputType="numberPassword"
+        android:maxLength="4"
+        android:textColor="@color/dark_gray"
+        android:textSize="35sp"
+        app:selectedTextColor="@color/colorAccent"
+        app:textBgColor="@color/light_gray"
+        app:textBgMargin="10dp"
+        app:textBgSelectedColor="@color/colorAccent"
+        app:textBgStrokeWidth="2dp"
+        app:textBgType="stroke"
+        tools:text="12"/>
+
+    <com.ayvytr.customview.custom.text.VerificationCodeEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:textColor="@color/dark_gray"
+        android:textSize="35sp"
+        app:selectedTextColor="@color/colorAccent"
+        app:textBgColor="@color/light_gray"
+        app:textBgMargin="10dp"
+        app:textBgSelectedColor="@color/aero"
+        app:textBgStrokeWidth="2dp"
+        app:textBgType="fill"
+        tools:text="12"/>
+
+    <Button
+        android:id="@+id/btn_change_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="更改背景框类型(随机，可能重复)"/>
+</LinearLayout>

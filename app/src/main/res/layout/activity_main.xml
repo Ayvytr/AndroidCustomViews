@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btnQuickIndexView"
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="QuickIndexView"/>
+        android:orientation="vertical"
+        tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btnNumberPickerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="NumberPickerView"/>
+        <Button
+            android:id="@+id/btnQuickIndexView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="QuickIndexView"/>
 
-    <Button
-        android:id="@+id/btnSuperEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SuperEditText"/>
+        <Button
+            android:id="@+id/btnNumberPickerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NumberPickerView"/>
 
-    <Button
-        android:id="@+id/btnClearableEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ClearableEditText"/>
+        <Button
+            android:id="@+id/btnSuperEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SuperEditText"/>
 
-    <Button
-        android:id="@+id/btnPasswordEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="PasswordEditText"/>
+        <Button
+            android:id="@+id/btnClearableEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ClearableEditText"/>
 
-    <Button
-        android:id="@+id/btnLoadingView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="LoadingviewTest"/>
+        <Button
+            android:id="@+id/btnPasswordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PasswordEditText"/>
 
-    <Button
-        android:id="@+id/btnLoadingView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="LoadingviewTest2"/>
+        <Button
+            android:id="@+id/btnLoadingView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Loadingview 加载效果"/>
 
-    <Button
-        android:id="@+id/btnEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="EditText"/>
+        <Button
+            android:id="@+id/btnInputFilter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DecimalDigitsInputFilter 数字的小数位数限制效果"/>
 
-    <Button
-        android:id="@+id/btnInputFilter"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="InputFilter"/>
-</LinearLayout>
+        <Button
+            android:id="@+id/btnVerificationEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="VerificationEditText  类似支付宝密码输入框"/>
+    </LinearLayout>
+</ScrollView>
