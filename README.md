@@ -39,7 +39,7 @@
 5. ClearableEditText 一键清空文本的EditText，直接继承AppCompatEditText  [使用方法](#ClearableEditText)
 6. PasswordEditText  点击或触摸显示/隐藏密码的EditText，直接继承AppCompatEditText [使用方法](#PasswordEditText)
 7. StatusView 状态管理View，继承自RelativeLayout，可以设置显示内容/empty view/error view/loading view，使用灵活，非常适合做Android状态管理 [使用方法](#StatusView)
-8. VerificationCodeEditText 验证码输入框，14新增和支付宝密码输入框类似，直接继承 AppCompatEditText [使用方法](VerificationCodeEditText )
+8. VerificationCodeEditText 验证码输入框，14新增和支付宝密码输入框类似，直接继承 AppCompatEditText [使用方法](#VerificationCodeEditText )
 
 ___
 
