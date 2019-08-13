@@ -1,14 +1,32 @@
-[![jCenter](https://img.shields.io/badge/jCenter-1.3.0-red.svg)](https://bintray.com/ayvytr/maven/custom-views/_latestVersion)  [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
+[![jCenter](https://img.shields.io/badge/jCenter-1.4.0-red.svg)](https://bintray.com/ayvytr/maven/custom-views/_latestVersion)  [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 <h1 id="AndroidCustomViews">AndroidCustomViews</h1>
-
 方便安卓开发者使用的自定义控件库
 
 
 
 ## 加入Gradle依赖
 
-	implementation 'com.ayvytr:custom-views:1.3.0'
+	implementation 'com.ayvytr:custom-views:1.4.0'
+
+
+
+## ChangeLog
+
+- 1.4.0
+  - VerificationCodeEditText 
+- 1.1.0
+  - StatusView
+  - DecimalDigitsInputFilter
+- 0.2.0
+  - ClearableEditText
+  - PasswordEditText
+
+- 0.1.0
+  - NumberPickerView 
+  - QuickIndexView
+  - SuperEditText
+  - SingleTextView
 
 
 
@@ -21,6 +39,7 @@
 5. ClearableEditText 一键清空文本的EditText，直接继承AppCompatEditText  [使用方法](#ClearableEditText)
 6. PasswordEditText  点击或触摸显示/隐藏密码的EditText，直接继承AppCompatEditText [使用方法](#PasswordEditText)
 7. StatusView 状态管理View，继承自RelativeLayout，可以设置显示内容/empty view/error view/loading view，使用灵活，非常适合做Android状态管理 [使用方法](#StatusView)
+8. VerificationCodeEditText 验证码输入框，14新增和支付宝密码输入框类似，直接继承 AppCompatEditText [使用方法](VerificationCodeEditText )
 
 ___
 
@@ -29,7 +48,6 @@ ___
 ## 自定义工具列表
 
 1. DecimalDigitsInputFilter EditText小数位数筛选器，控制小数位数长度
-2. 
 
 
 
@@ -43,16 +61,15 @@ ___
 | ------------------------------------------- | ------------------------------------------ | ---------------------------------------------- |
 | <img src="screenshots/QuickIndexView.gif"/> | <img src="screenshots/SuperEditText.gif"/> | <img src="screenshots/ClearableEditText.gif"/> |
 
-| PasswordEditText                      |
-| ------------------------------------- |
-| ![](screenshots/PasswordEditText.gif) |
+| PasswordEditText                      |      |      |
+| ------------------------------------- | ---- | ---- |
+| ![](screenshots/PasswordEditText.gif) |      |      |
 
 
 
 ## 使用和说明
 
 <h3 id="NumberPickerView">NumberPickerView</h3>
-
 `NumberPickerView`是一款与android原生`NumberPicker`具有类似界面以及类似功能的`View`。
 主要功能同样是从多个候选项中通过上下滚动的方式选择需要的选项，但是与`NumberPicker`相比较，有几个主要不同点，下面是两者的不同之处。
 
@@ -236,7 +253,6 @@ ___
 
 
 <h3 id="QuickIndexView">QuickIndexView</h3>
-
 在布局文件中加入QuickIndexView，并且加入自定义属性，或者代码中动态创建和设置自定义属性即可
 
 ```
@@ -287,7 +303,6 @@ indexArray			字母索引数组
 
 
 <h3 id="SuperEditText">SuperEditText</h3>
-
 #### API文档
 
 ```
@@ -335,7 +350,6 @@ setText(String text)	设置文本
 
 
 <h3 id="ClearableEditText">ClearableEditText</h3>
-
 #### API 文档
 
 ```java
@@ -355,7 +369,6 @@ setShowClearDrawableNoFocus(boolean showClearDrawableNoFocus) 设置没有焦�
 ```
 
 <h3 id="PasswordEditText">PasswordEditText</h3>
-
 #### API 文档
 
 ```
@@ -388,7 +401,6 @@ setShowPasswordDrawable(int showPasswordDrawableId) 设置显示密码Drawable
 ------
 
 <h3 id="StatusView">StatusView</h3>
-
 #### 使用方法
 
 `使用StatusView自定义属性设置你自己的loading view等布局。默认status是CONTENT。content view可以使用自定义属性contentView或者在StatusView内直接加入你自己的View：`
@@ -452,33 +464,46 @@ setShowPasswordDrawable(int showPasswordDrawableId) 设置显示密码Drawable
 
 
 
-------
+---
 
 
 
-## ChangeLog
+<h3 id="VerificationCodeEditText ">VerificationCodeEditText </h3>
 
-- 1.1.0
-  - StatusView
-  - DecimalDigitsInputFilter
-- 0.2.0
-  - ClearableEditText
-  - PasswordEditText
-- 0.1.0
-  - NumberPickerView 
-  - QuickIndexView
-  - SuperEditText
-  - SingleTextView
+自定义属性表：
+
+    <declare-styleable name="VerificationCodeEditText">
+        <!--最大输入长度，默认6位-->
+        <attr name="android:maxLength"/>
+        <!--背景，默认无 -->
+        <attr name="android:background"/>
+        设置输入类型，明文/密码 只有number, numberPassword起作用，不等于numberPassword时，一律为number
+        <attr name="android:inputType"/>
+        <!--字体颜色，因为直接继承的EditText, 不用写明-->
+        <!--<attr name="android:textColor"/>-->
+    
+        <!--选中的字体背景色-->
+        <attr name="textBgSelectedColor" format="reference"/>
+        <!--字体背景色-->
+        <attr name="textBgColor" format="reference"/>
+        <!--字体背景框粗细-->
+        <attr name="textBgStrokeWidth" format="dimension"/>
+        <!--选中的字体颜色-->
+        <attr name="selectedTextColor" format="color|reference"/>
+        <!--字体背景相互间距-->
+        <attr name="textBgMargin" format="dimension"/>
+        <!--密码显示文本，默认为*，长度为1的字符串即可，（其他自定义的密码文本未做居中处理）-->
+        <attr name="passwordText" format="string"/>
+        <!--字体背景类型：下划线，方框，填充-->
+        <attr name="textBgType" format="enum">
+            <enum name="underline" value="0"/>
+            <enum name="stroke" value="1"/>
+            <enum name="fill" value="2"/>
+        </attr>
+    </declare-styleable>
 
 
 
-
-## TODO
-
-1. ~~SuperEditText自定义属性过多，需要优化和重新设计~~
-2. 加入更多自定义View
-3. 自定义TabLayout
-4. 完善测试用例（欢迎熟练Espresso等测试的大神提意见或者推荐资料）
 
 
 
@@ -487,3 +512,8 @@ setShowPasswordDrawable(int showPasswordDrawableId) 设置显示密码Drawable
 
 
 ## 都看到这儿了，那就请点个[Star](#AndroidCustomViews)吧！非常感谢！
+
+
+
+
+
