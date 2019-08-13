@@ -63,7 +63,7 @@ ___
 
 | PasswordEditText                      | VerificationCodeEditText                 |      |
 | ------------------------------------- | ---------------------------------------- | ---- |
-| ![](screenshots/PasswordEditText.gif) | ![img](screenshots/PasswordEditText.gif) |      |
+| ![](screenshots/PasswordEditText.gif) | ![img](screenshots/VerificationCodeEditText.gif) |      |
 
 
 
