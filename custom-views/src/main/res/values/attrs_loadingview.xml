@@ -5,19 +5,18 @@
         <attr name="errorView" format="reference"/>
         <attr name="emptyView" format="reference"/>
         <attr name="status" format="enum">
-            <enum name="NONE" value="-1"/>
-            <enum name="CONTENT" value="0"/>
-            <enum name="LOADING" value="1"/>
-            <enum name="ERROR" value="2"/>
-            <enum name="EMPTY" value="3"/>
+            <enum name="content" value="-1"/>
+            <enum name="loading" value="0"/>
+            <enum name="error" value="1"/>
+            <enum name="empty" value="2"/>
         </attr>
     </declare-styleable>
 
-    <!--默认状态为COTNENT，因为布局文件预览时，设置为其他状态看不到预览-->
+    <!--默认状态为content，因为布局文件预览时，设置为其他状态看不到预览-->
     <style name="LoadingViewDefaultStyle">
         <item name="loadingView">@layout/layout_loading</item>
         <item name="errorView">@layout/layout_error</item>
         <item name="emptyView">@layout/layout_empty</item>
-        <item name="status">CONTENT</item>
+        <item name="status">content</item>
     </style>
 </resources>

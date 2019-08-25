@@ -101,14 +101,14 @@
             android:id="@+id/btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="aaa"/>
+            android:text="Button"/>
 
         <Button
             android:id="@+id/btn2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/btn"
-            android:text="fff"/>
+            android:text="hahaha"/>
     </com.ayvytr.customview.loading.StatusView>
 
 </android.support.constraint.ConstraintLayout>
