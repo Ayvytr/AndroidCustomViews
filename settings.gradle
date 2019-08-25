@@ -1,2 +1,3 @@
 include ':app', ':custom-views', ':cardviewpager'
 include ':custom-views'
+include ':custom-views-androidx'

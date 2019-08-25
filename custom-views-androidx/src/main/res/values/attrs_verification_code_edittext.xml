@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="VerificationCodeEditText">
+        <!--最大输入长度，默认6位-->
+        <attr name="android:maxLength"/>
+        <!--背景，默认无 -->
+        <attr name="android:background"/>
+        设置输入类型，明文/密码 只有number, numberPassword起作用，不等于numberPassword时，一律为number
+        <attr name="android:inputType"/>
+        <!--字体颜色，因为直接继承的EditText, 不用写明-->
+        <!--<attr name="android:textColor"/>-->
+
+        <!--选中的字体背景色-->
+        <attr name="textBgSelectedColor" format="reference"/>
+        <!--字体背景色-->
+        <attr name="textBgColor" format="reference"/>
+        <!--字体背景框粗细-->
+        <attr name="textBgStrokeWidth" format="dimension"/>
+        <!--选中的字体颜色-->
+        <attr name="selectedTextColor" format="color|reference"/>
+        <!--字体背景相互间距-->
+        <attr name="textBgMargin" format="dimension"/>
+        <!--密码显示文本，默认为*，长度为1的字符串即可，（其他自定义的密码文本未做居中处理）-->
+        <attr name="passwordText" format="string"/>
+        <!--字体背景类型：下划线，方框，填充-->
+        <attr name="textBgType" format="enum">
+            <enum name="underline" value="0"/>
+            <enum name="stroke" value="1"/>
+            <enum name="fill" value="2"/>
+        </attr>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SuperEditText">
+        <attr name="android:text"/>
+        <attr name="android:hint"/>
+        <attr name="android:inputType"/>
+        <attr name="android:enabled"/>
+        <attr name="android:background"/>
+        <attr name="android:digits"/>
+        <attr name="android:maxLength"/>
+        <attr name="android:textColor"/>
+        <attr name="android:textColorHint"/>
+        <attr name="textPaddingLeft" format="dimension"/>
+        <attr name="textPaddingRight" format="dimension"/>
+        <attr name="textPaddingTop" format="dimension"/>
+        <attr name="textPaddingBottom" format="dimension"/>
+        <attr name="textPadding" format="dimension"/>
+        <attr name="filterChinese" format="boolean"/>
+        <attr name="switchShowPassword" format="boolean"/>
+        <attr name="clearIcon" format="reference"/>
+        <attr name="showClearIcon" format="boolean"/>
+        <attr name="textBackground" format="reference"/>
+    </declare-styleable>
+</resources>
