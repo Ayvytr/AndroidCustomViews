@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -221,7 +220,6 @@ public class StatusView extends RelativeLayout {
      * @param msg Loading提示文字
      */
     public void showLoading(@Nullable String msg) {
-        Log.e("tag", "showLoading");
         setMsgByTargetView(msg, loadingView);
         if(mStatus != LOADING) {
             mStatus = LOADING;
