@@ -1,4 +1,4 @@
-[![jCenter](https://img.shields.io/badge/jCenter-1.4.0-red.svg)](https://bintray.com/ayvytr/maven/custom-views/_latestVersion)  [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
+[![jCenter](https://img.shields.io/badge/jCenter-1.4.1-red.svg)](https://bintray.com/ayvytr/maven/custom-views/_latestVersion)  [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 <h1 id="AndroidCustomViews">AndroidCustomViews</h1>
 方便安卓开发者使用的自定义控件库
@@ -7,7 +7,10 @@
 
 ## 加入Gradle依赖
 
-	implementation 'com.ayvytr:custom-views:1.4.0'
+android:
+	implementation 'com.ayvytr:custom-views:1.4.1'
+androidx:
+	implementation 'com.ayvytr:custom-views-androidx:1.4.1'
 
 
 
