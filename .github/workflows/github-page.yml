@@ -27,7 +27,7 @@ jobs:
       - uses: gradle/gradle-build-action@v2
         with:
           gradle-version: 6.7.1
-          arguments: dokkaHtml
+          arguments: custom-views-androidx:javadoc
 
       # 部署到 GitHub Pages
       - name: Deploy
@@ -36,6 +36,6 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           REPOSITORY_NAME: ayvytr/ayvytr.github.io
           BRANCH: master
-          FOLDER: ./custom-views-androidx/build/javadoc
+          FOLDER: ./custom-views-androidx/build/docs/javadoc
           CLEAN: false
-          TARGET_FOLDER: javadocs/ktx
+          TARGET_FOLDER: javadocs/custom-views-androidx
