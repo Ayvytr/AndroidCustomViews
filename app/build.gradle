@@ -27,6 +27,7 @@ android {
     }
 }
 
+def isMaven = false
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -46,7 +47,10 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.8.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
 
-    implementation project(':custom-views-androidx')
+    if(isMaven) {
+    } else {
+        implementation project(':custom-views-androidx')
+    }
 
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'io.github.ayvytr:base-adapter:0.1.2'

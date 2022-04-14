@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply from: '../kotlin_maven_push.gradle'
 
 android {
     compileSdkVersion 31
@@ -33,4 +34,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+
+    dokkaJavadocPlugin("org.jetbrains.dokka:kotlin-as-java-plugin:1.6.0")
+
 }
