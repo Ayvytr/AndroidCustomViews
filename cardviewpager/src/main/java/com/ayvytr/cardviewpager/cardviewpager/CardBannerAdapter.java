@@ -1,19 +1,20 @@
 package com.ayvytr.cardviewpager.cardviewpager;
 
-import android.support.annotation.NonNull;
-import android.support.v4.view.PagerAdapter;
-import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.ayvytr.cardviewpager.R;
-import com.ayvytr.easykotlin.context.ContextKt;
+import com.ayvytr.ktx.context.DpKt;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.viewpager.widget.PagerAdapter;
 
 /**
  * @author ayvytr
@@ -49,7 +50,7 @@ public class CardBannerAdapter extends PagerAdapter {
              .apply(requestOptions)
              .into(iv);
 
-        cardView.setMaxCardElevation(ContextKt.dp2px(container.getContext(), 5));
+        cardView.setMaxCardElevation(DpKt.getDp2px(5));
         container.addView(view);
         return view;
     }

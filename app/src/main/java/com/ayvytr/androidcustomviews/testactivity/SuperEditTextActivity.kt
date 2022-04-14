@@ -1,7 +1,7 @@
 package com.ayvytr.androidcustomviews.testactivity
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.ayvytr.androidcustomviews.R
 import com.ayvytr.customview.custom.text.SuperEditText
 

@@ -1,8 +1,8 @@
 package com.ayvytr.androidcustomviews.testactivity
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.ayvytr.androidcustomviews.R
 import com.ayvytr.baseadapter.CommonAdapter
 import com.ayvytr.baseadapter.ViewHolder
@@ -28,7 +28,12 @@ class StatusView2Activity : AppCompatActivity() {
             runOnUiThread {
                 rv.adapter = object :
                     CommonAdapter<String>(this@StatusView2Activity, R.layout.item, list.toMutableList()) {
-                    override fun convert(holder: ViewHolder, t: String, position: Int) {
+                    override fun onBindView(
+                        holder: ViewHolder,
+                        t: String,
+                        position: Int,
+                        payloads: List<Any>
+                    ) {
                         holder.setText(R.id.tv, t)
                     }
                 }

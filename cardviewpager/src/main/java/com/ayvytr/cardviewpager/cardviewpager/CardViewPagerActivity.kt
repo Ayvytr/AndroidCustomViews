@@ -1,7 +1,7 @@
 package com.ayvytr.cardviewpager.cardviewpager
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.ayvytr.cardviewpager.R
 import kotlinx.android.synthetic.main.activity_card_view_pager.*
 

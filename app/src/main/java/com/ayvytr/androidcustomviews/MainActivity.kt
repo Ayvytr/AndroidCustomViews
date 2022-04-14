@@ -2,10 +2,10 @@ package com.ayvytr.androidcustomviews
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.ayvytr.androidcustomviews.testactivity.*
 import com.ayvytr.androidcustomviews.testactivity.numberpickerview.NumberPickerActivity
-import com.ayvytr.easykotlin.ui.getContext
+import com.ayvytr.ktx.ui.getContext
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.startActivity
@@ -23,10 +23,10 @@ class MainActivity : AppCompatActivity() {
         btnNumberPickerView.setOnClickListener { startActivity(Intent(getContext(), NumberPickerActivity::class.java)) }
         btnSuperEditText.setOnClickListener { startActivity(Intent(getContext(), SuperEditTextActivity::class.java)) }
 
-        btnClearableEditText.onClick { startActivity<ClearableEditTextActivity>() }
-        btnPasswordEditText.onClick { startActivity<PasswordEditTextActivity>() }
-        btnLoadingView.onClick { startActivity<StatusViewActivity>() }
-        btnInputFilter.onClick { startActivity<InputFilterActivity>() }
-        btnVerificationEditText.onClick { startActivity<VerificationCodeEditTextActivity>() }
+        btnClearableEditText.setOnClickListener { startActivity<ClearableEditTextActivity>() }
+        btnPasswordEditText.setOnClickListener { startActivity<PasswordEditTextActivity>() }
+        btnLoadingView.setOnClickListener { startActivity<StatusViewActivity>() }
+        btnInputFilter.setOnClickListener { startActivity<InputFilterActivity>() }
+        btnVerificationEditText.setOnClickListener { startActivity<VerificationCodeEditTextActivity>() }
     }
 }

@@ -3,14 +3,15 @@ package com.ayvytr.androidcustomviews.testactivity
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.Gravity
+import androidx.appcompat.app.AppCompatActivity
 import com.ayvytr.androidcustomviews.R
 import com.ayvytr.customview.custom.index.QuickIndexView
-import com.ayvytr.easykotlin.context.dp2px
-import com.ayvytr.easykotlin.context.getDrawable2
-import com.ayvytr.easykotlin.context.getStringArray
-import com.ayvytr.easykotlin.context.toast
+import com.ayvytr.customview.util.DensityUtil.dp2px
+import com.ayvytr.ktx.context.dp
+import com.ayvytr.ktx.context.getDrawable2
+import com.ayvytr.ktx.context.getStringArray
+import com.ayvytr.ktx.context.toast
 import kotlinx.android.synthetic.main.activity_quick_index_view.*
 import java.util.*
 
@@ -40,7 +41,7 @@ class QuickIndexViewActivity : AppCompatActivity()
                 return null
             }
 
-            return getDrawable2(drawables[i])
+            return resources.getDrawable(drawables[i])
         }
 
 
@@ -81,7 +82,7 @@ class QuickIndexViewActivity : AppCompatActivity()
         get()
         {
             var i = random.nextInt(1000)
-            while (i < dp2px(50))
+            while (i < 50.dp)
             {
                 i = random.nextInt(1000)
             }

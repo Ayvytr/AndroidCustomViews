@@ -1,7 +1,7 @@
 package com.ayvytr.cardviewpager
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.ayvytr.cardviewpager.cardviewpager.CardViewPagerActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
@@ -16,6 +16,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        btnCardViewPager.onClick { startActivity<CardViewPagerActivity>() }
+        btnCardViewPager.setOnClickListener{ startActivity<CardViewPagerActivity>() }
     }
 }

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -16,11 +15,14 @@ import com.ayvytr.customview.custom.numberpicker.NumberPickerView;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 
 /**
  * Created by Carbs.Wang on 2016/6/24.
  */
-public class ActivityTimePicker extends AppCompatActivity implements View.OnClickListener, NumberPickerView.OnValueChangeListener{
+public class ActivityTimePicker extends AppCompatActivity
+        implements View.OnClickListener, NumberPickerView.OnValueChangeListener{
 
     private NumberPickerView mPickerViewH;
     private NumberPickerView mPickerViewM;

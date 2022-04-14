@@ -1,7 +1,7 @@
 package com.ayvytr.androidcustomviews.testactivity
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.ayvytr.androidcustomviews.R
 import com.ayvytr.customview.custom.text.VerificationCodeEditText
 import kotlinx.android.synthetic.main.activity_verification_code_edittext.*
@@ -26,7 +26,7 @@ class VerificationCodeEditTextActivity : AppCompatActivity() {
             }
         )
 
-        btn_change_bg.onClick {
+        btn_change_bg.setOnClickListener {
             vc_et.setTextBgType(VerificationCodeEditText.TextBgType.valueOf(Random.nextInt(3)))
         }
     }
