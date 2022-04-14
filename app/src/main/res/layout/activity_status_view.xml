@@ -14,7 +14,8 @@
         android:text="Loading"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/btnShowError"/>
+        app:layout_constraintRight_toLeftOf="@id/btnShowError"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnShowError"
@@ -22,7 +23,8 @@
         android:layout_height="wrap_content"
         android:text="Error"
         app:layout_constraintLeft_toRightOf="@id/btnShowLoading"
-        app:layout_constraintRight_toLeftOf="@id/btnShowEmpty"/>
+        app:layout_constraintRight_toLeftOf="@id/btnShowEmpty"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnShowEmpty"
@@ -30,7 +32,8 @@
         android:layout_height="wrap_content"
         android:text="Empty"
         app:layout_constraintLeft_toRightOf="@id/btnShowError"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnShowLoadingWithText"
@@ -40,7 +43,7 @@
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/btnShowError"
-        app:layout_constraintTop_toBottomOf="@id/btnShowLoading"/>
+        app:layout_constraintTop_toBottomOf="@id/btnShowLoading" />
 
     <Button
         android:id="@+id/btnShowErrorWithText"
@@ -49,7 +52,7 @@
         android:text="Error with Text"
         app:layout_constraintLeft_toRightOf="@id/btnShowLoading"
         app:layout_constraintRight_toLeftOf="@id/btnShowEmpty"
-        app:layout_constraintTop_toBottomOf="@id/btnShowLoading"/>
+        app:layout_constraintTop_toBottomOf="@id/btnShowLoading" />
 
     <Button
         android:id="@+id/btnShowEmptyWithText"
@@ -58,14 +61,15 @@
         android:text="Empty with Text"
         app:layout_constraintLeft_toRightOf="@id/btnShowError"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnShowLoading"/>
+        app:layout_constraintTop_toBottomOf="@id/btnShowLoading" />
 
     <Button
         android:id="@+id/btnResetMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="重置默认Msg"
-        app:layout_constraintTop_toBottomOf="@id/btnShowLoadingWithText"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnShowLoadingWithText" />
 
     <Button
         android:id="@+id/btnChangeView"
@@ -73,7 +77,7 @@
         android:layout_height="wrap_content"
         android:text="修改View"
         app:layout_constraintLeft_toRightOf="@id/btnResetMsg"
-        app:layout_constraintTop_toBottomOf="@id/btnShowLoadingWithText"/>
+        app:layout_constraintTop_toBottomOf="@id/btnShowLoadingWithText" />
 
     <Button
         android:id="@+id/btnShowContent"
@@ -81,35 +85,35 @@
         android:layout_height="wrap_content"
         android:text="显示Content"
         app:layout_constraintLeft_toRightOf="@id/btnChangeView"
-        app:layout_constraintTop_toBottomOf="@id/btnShowLoadingWithText"/>
+        app:layout_constraintTop_toBottomOf="@id/btnShowLoadingWithText" />
 
     <Button
         android:id="@+id/btnListDemo"
-        android:text="StatusView加载List效果"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/btnResetMsg"/>
+        android:text="StatusView加载List效果"
+        app:layout_constraintTop_toBottomOf="@id/btnResetMsg" />
 
     <com.ayvytr.customview.loading.StatusView
         android:id="@+id/statusView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:status="empty"
-        app:layout_constraintTop_toBottomOf="@id/btnListDemo">
+        app:layout_constraintTop_toBottomOf="@id/btnListDemo"
+        app:status="empty">
 
         <Button
             android:id="@+id/btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"/>
+            android:text="Button" />
 
         <Button
             android:id="@+id/btn2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/btn"
-            android:text="hahaha"/>
+            android:text="hahaha" />
     </com.ayvytr.customview.loading.StatusView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

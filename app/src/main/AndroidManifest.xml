@@ -32,8 +32,6 @@
         </activity>
         <activity android:name=".testactivity.StatusViewActivity">
         </activity>
-        <activity android:name=".testactivity.InputFilterActivity">
-        </activity>
     </application>
 
 </manifest>
