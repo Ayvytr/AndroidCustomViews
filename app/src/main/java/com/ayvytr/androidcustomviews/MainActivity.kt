@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
         btnClearableEditText.setOnClickListener { startActivity<ClearableEditTextActivity>() }
         btnPasswordEditText.setOnClickListener { startActivity<PasswordEditTextActivity>() }
         btnLoadingView.setOnClickListener { startActivity<StatusViewActivity>() }
-        btnInputFilter.setOnClickListener { startActivity<InputFilterActivity>() }
         btnVerificationEditText.setOnClickListener { startActivity<VerificationCodeEditTextActivity>() }
     }
 }

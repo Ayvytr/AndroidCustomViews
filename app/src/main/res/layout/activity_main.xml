@@ -49,12 +49,6 @@
             android:text="Loadingview 加载效果"/>
 
         <Button
-            android:id="@+id/btnInputFilter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="DecimalDigitsInputFilter 数字的小数位数限制效果"/>
-
-        <Button
             android:id="@+id/btnVerificationEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
