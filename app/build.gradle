@@ -5,6 +5,7 @@ plugins {
 
 android {
     compileSdkVersion 31
+    namespace "com.ayvytr.customviewproject"
 
     defaultConfig {
         applicationId "com.ayvytr.customviewproject"

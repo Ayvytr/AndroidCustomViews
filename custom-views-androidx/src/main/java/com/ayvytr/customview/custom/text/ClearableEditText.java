@@ -10,15 +10,15 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.ayvytr.customview.R;
+import com.ayvytr.customview.util.DensityUtil;
+import com.ayvytr.customview.util.ResUtil;
+
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
-
-import com.ayvytr.customview.R;
-import com.ayvytr.customview.util.DensityUtil;
-import com.ayvytr.customview.util.ResUtil;
 
 
 /**
@@ -42,7 +42,7 @@ public class ClearableEditText extends AppCompatEditText
     }
 
     public ClearableEditText(Context context, AttributeSet attrs) {
-        this(context, attrs, R.attr.editTextStyle);
+        this(context, attrs, 0);
     }
 
     public ClearableEditText(Context context, AttributeSet attrs, int defStyleAttr) {

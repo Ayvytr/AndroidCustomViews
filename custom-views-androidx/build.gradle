@@ -1,10 +1,13 @@
 plugins {
     alias(libs.plugins.android.library)
     id "com.vanniktech.maven.publish" version "0.35.0"
+    alias(libs.plugins.dokka)
+
 }
 
 android {
     compileSdkVersion 31
+    namespace "com.ayvytr.customview"
 
     defaultConfig {
         minSdkVersion 14

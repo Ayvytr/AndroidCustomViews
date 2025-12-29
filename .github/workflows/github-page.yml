@@ -11,23 +11,33 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      # 拉取代码
+      # 1. 拉取代码（包括 Gradle Wrapper）
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
 
-      - name: Set up the Java JDK
-        uses: actions/setup-java@v2
+      # 2. 设置 Java 环境
+      - name: Set up Java
+        uses: actions/setup-java@v4
         with:
-          java-version: '11'
-          distribution: 'adopt'
+          java-version: '17'
+          distribution: 'zulu'
+
+      # 3. （可选但推荐）设置 Gradle 环境并利用其缓存优化
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4 # 使用新的官方 Action 并省略 gradle-version 参数
+        # 注意这里移除了 with: gradle-version 配置
+
+      - name: Make gradlew executable
+        run: chmod +x gradlew
 
       # 生成javadoc
-      - uses: gradle/gradle-build-action@v2
-        with:
-          gradle-version: 6.7.1
-          arguments: custom-views-androidx:javadoc
+        uses: gradle/actions/setup-gradle@v4 # 使用新的官方 Action 并省略 gradle-version 参数
+
+      - name: Generate Javadoc with Gradle Wrapper
+        run: ./gradlew javaDocReleaseGeneration
+
 
       # 部署到 GitHub Pages
       - name: Deploy
@@ -36,6 +46,6 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           REPOSITORY_NAME: ayvytr/ayvytr.github.io
           BRANCH: master
-          FOLDER: ./custom-views-androidx/build/docs/javadoc
+          FOLDER: ./custom-views-androidx/build/intermediates/java_doc_dir/release/javaDocReleaseGeneration
           CLEAN: false
           TARGET_FOLDER: javadocs/custom-views-androidx
