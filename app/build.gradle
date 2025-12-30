@@ -5,10 +5,10 @@ plugins {
 
 android {
     compileSdkVersion 31
-    namespace "com.ayvytr.customviewproject"
+    namespace "com.ayvytr.androidcustomviews"
 
     defaultConfig {
-        applicationId "com.ayvytr.customviewproject"
+        applicationId "com.ayvytr.androidcustomviews"
         minSdkVersion 14
         targetSdkVersion 30
         versionCode 1
